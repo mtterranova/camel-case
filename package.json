@@ -7,6 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "serve": "nodemon ./server/server.js",
     "start": ""
   },
   "author": "camel-case",
@@ -19,6 +20,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "firebase": "^3.1.0",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-redux": "^4.4.5",
