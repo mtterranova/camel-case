@@ -2,7 +2,8 @@ import React from 'react'
 import {Route, IndexRoute, Router, browserHistory} from 'react-router'
 
 
-import App from './src/components/App'
+import App from './components/App'
+import Home from './components/Home'
 import  hashHistory  from 'react-router'
 
 export default (

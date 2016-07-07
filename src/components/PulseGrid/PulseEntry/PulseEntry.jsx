@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PulseEntryOrb from './PulseEntryOrb';
-import PulseEntryRing from './PulseEntryRing';
-import PulseEntryHover from './PulseEntryHover';
 
 class PulseEntry extends React.Component {
   constructor(props) {
@@ -15,9 +13,9 @@ class PulseEntry extends React.Component {
   
   render() {
     return (
-      <PulseEntryOrb/>
-      <PulseEntryRing/>
-      <PulseEntryHover/>
+      <div id="PulseEntryContainer">
+        <PulseEntryOrb/>
+      </div>
     );
   }
 }

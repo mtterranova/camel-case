@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PulseEntry from './PulseEntry/PulseEntry'
+import PulseEntry from './PulseGrid/PulseEntry/PulseEntry'
 
 class Home extends React.Component {
   constructor(props) {
