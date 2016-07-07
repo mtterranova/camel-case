@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "start": ""
   },
   "author": "camel-case",
   "license": "ISC",
@@ -21,6 +21,9 @@
     "express": "^4.14.0",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.5.2",
+    "redux": "^3.5.2",
     "underscore": "^1.8.3",
     "webpack": "^1.13.1"
   }
