@@ -28459,6 +28459,14 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _PulseEntry = __webpack_require__(261);
+	
+	var _PulseEntry2 = _interopRequireDefault(_PulseEntry);
+	
+	var _PulseHelpers = __webpack_require__(263);
+	
+	var _PulseHelpers2 = _interopRequireDefault(_PulseHelpers);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28475,21 +28483,41 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PulseEntryOrb).call(this, props));
 	
+	    _this.handleHover = _this.handleHover.bind(_this);
 	    _this.state = {};
 	    return _this;
 	  }
 	
 	  _createClass(PulseEntryOrb, [{
+	    key: 'handleHover',
+	    value: function handleHover() {
+	      console.log('handle hover');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var colours = [1, 2, 3, 4, 5];
-	      var items = colours.map(function (color) {
+	
+	      var articles = [{
+	        title: "Amigo jumps from ones roof",
+	        reactions: {
+	          angry: 19,
+	          happy: 20,
+	          sad: 0
+	        }
+	      }];
+	
+	      var items = articles.map(function (article, index) {
+	        var _this2 = this;
+	
+	        var color = _PulseHelpers2.default.colorPicker(article.reactions);
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'pulsatingCircle' },
-	          _react2.default.createElement('span', { className: 'firstCircle' }),
-	          _react2.default.createElement('span', { className: 'secondCircle' }),
-	          _react2.default.createElement('span', { className: 'thirdCircle' })
+	          { className: 'pulsatingCircle', onMouseEnter: function onMouseEnter() {
+	              return _this2.handleHover;
+	            } },
+	          _react2.default.createElement('span', { className: 'firstCircle', style: { 'backgroundColor': color } }),
+	          _react2.default.createElement('span', { className: 'secondCircle', style: { 'borderColor': color } }),
+	          _react2.default.createElement('span', { className: 'thirdCircle', style: { 'borderColor': color } })
 	        );
 	      });
 	
@@ -28505,6 +28533,63 @@
 	}(_react2.default.Component);
 	
 	module.exports = PulseEntryOrb;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var PulseHelpers = {
+		colorPicker: function colorPicker(reactions) {
+			var biggestReaction = Object.keys(reactions).reduce(function (a, b) {
+				return reactions[a] > reactions[b] ? a : b;
+			});
+			var biggestReactionColor = getReactionColor(biggestReaction);
+			var biggestReactionCount = reactions[biggestReaction];
+	
+			delete reactions[biggestReaction];
+	
+			var secondBiggestReaction = Object.keys(reactions).reduce(function (a, b) {
+				return reactions[a] > reactions[b] ? a : b;
+			});
+			var secondBiggestReactionColor = getReactionColor(secondBiggestReaction);
+			var secondBiggestReactionCount = reactions[secondBiggestReaction];
+	
+			return colorConverter(biggestReactionColor, biggestReactionCount, secondBiggestReactionColor, secondBiggestReactionCount);
+		}
+	};
+	
+	function colorConverter(biggestReactionColor, biggestReactionCount, secondBiggestReactionColor, secondBiggestReactionCount) {
+	
+		var ramp = d3.scaleLinear().domain([-secondBiggestReactionCount, 0, biggestReactionCount]).range([secondBiggestReactionColor, '#d3d3d3', biggestReactionColor]);
+		console.log(ramp((biggestReactionCount + -secondBiggestReactionCount) / 2));
+		return ramp((biggestReactionCount + -secondBiggestReactionCount) / 2);
+	}
+	
+	function getReactionColor(reaction) {
+		switch (reaction) {
+			case 'sad':
+				console.log('return sad blue');
+				return colors.sadBlue;
+			case 'angry':
+				console.log('return depressing red');
+				return colors.depressingRed;
+			case 'happy':
+				console.log('return happy green');
+				return colors.happyGreen;
+			default:
+				break;
+		}
+	}
+	
+	var colors = {
+		depressingRed: '#FF6C6B',
+		happyGreen: '#4CCC92',
+		sadBlue: '#2EB3C9'
+	};
+	
+	module.exports = PulseHelpers;
 
 /***/ }
 /******/ ]);

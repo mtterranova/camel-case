@@ -37,7 +37,11 @@ Pulse Entry
     height: 10px;
     margin: -5px 0 0 -5px;
     background-color: #ccc;
+    animation: 2000ms pulse 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 500ms ease-in-out infinite
 }
+
+
 
 .secondCircle {
     width: 16px;
@@ -47,6 +51,22 @@ Pulse Entry
     animation: 2000ms pulseIn ease-in-out infinite;
     -webkit-animation: 2000ms pulseIn ease-in-out infinite;
 }
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(0.7, 0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(0.7, 0.7);
+    }
+}
+
 
 @keyframes pulseIn {
     0% {
