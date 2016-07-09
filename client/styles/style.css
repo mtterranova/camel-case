@@ -146,25 +146,28 @@ ClickMenuAnimations
     -webkit-transition: all 0.5s ease-in-out;
 }
 
+#pulseEntryHover:hover #reactionBar{
+    display:inherit;
+}
+
 
 #articleTitle{
-    width: 0px;
-    height: 0px;
     font-size: 40px;
     
 }
 
 #articleAbstract{
-    
+    padding-left: 15px;
 }
 
 #reactionBar{
     width: 30%;
     height: 25px;
     margin-left: 20px;
+    padding-top: 10px;
 }
 
-#articleTitle, #articleAbstract, #reactionBar{
+#articleTitle, #articleAbstract, #reactionBar, #reactionsButtonL{
     color:transparent;
     animation: all 2.0s ease-in-out;
     -webkit-transition: all 2.0s ease-in-out;

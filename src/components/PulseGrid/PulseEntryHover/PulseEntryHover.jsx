@@ -22,7 +22,7 @@ class PulseEntryHover extends React.Component {
       backgroundColor: this.state.reactionColor,
       textColor: 'white'
     })
-    $("#reactionsButtonList").fadeIn();
+    
   }
 
   handleMouseLeave(){
@@ -37,7 +37,7 @@ class PulseEntryHover extends React.Component {
     
     return (
       <div  id="pulseEntryHover" onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} style={{'backgroundColor': this.state.backgroundColor}}> 
-        <h id="articleTitle" style={{color:this.state.textColor}}>{this.props.articleData.title}</h>
+        <h1 id="articleTitle" style={{color:this.state.textColor}}>{this.props.articleData.title}</h1>
         <p id="articleAbstract" style={{color:this.state.textColor}}>{this.props.articleData.abstract}</p>
         <ReactionBar id="reactionBar" articleData={this.props.articleData}/>
       </div>

@@ -32,7 +32,12 @@ class ReactionBar extends React.Component{
 		};
 		return (
 			<div id="reactionBar">
-				
+				<ul id="reactionsButtonList">
+					<li><RaisedButton label="Happy" style={style}/></li>
+					<li><RaisedButton label="Sad" style={style} /></li>
+					<li><RaisedButton label="Angry" style={style} /></li>
+					<li><RaisedButton label="Afraid" style={style} /></li>
+				</ul>
 			</div>
 		)
 	}

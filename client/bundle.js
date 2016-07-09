@@ -45158,7 +45158,6 @@
 	        backgroundColor: this.state.reactionColor,
 	        textColor: 'white'
 	      });
-	      (0, _jquery2.default)("#reactionsButtonList").fadeIn();
 	    }
 	  }, {
 	    key: 'handleMouseLeave',
@@ -45177,7 +45176,7 @@
 	        'div',
 	        { id: 'pulseEntryHover', onMouseOver: this.handleMouseOver, onMouseLeave: this.handleMouseLeave, style: { 'backgroundColor': this.state.backgroundColor } },
 	        _react2.default.createElement(
-	          'h',
+	          'h1',
 	          { id: 'articleTitle', style: { color: this.state.textColor } },
 	          this.props.articleData.title
 	        ),
@@ -73508,7 +73507,34 @@
 					margin: 12,
 					backgroundColor: 'transparent'
 				};
-				return _react2.default.createElement('div', { id: 'reactionBar' });
+				return _react2.default.createElement(
+					'div',
+					{ id: 'reactionBar' },
+					_react2.default.createElement(
+						'ul',
+						{ id: 'reactionsButtonList' },
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(_RaisedButton2.default, { label: 'Happy', style: style })
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(_RaisedButton2.default, { label: 'Sad', style: style })
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(_RaisedButton2.default, { label: 'Angry', style: style })
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(_RaisedButton2.default, { label: 'Afraid', style: style })
+						)
+					)
+				);
 			}
 		}]);
 	
