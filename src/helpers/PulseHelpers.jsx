@@ -1,17 +1,18 @@
-
+import _ from 'lodash'
 
 var PulseHelpers = {
 	colorPicker: function(reactions){
-		var biggestReaction = Object.keys(reactions).reduce(function(a, b){ return reactions[a] > reactions[b] ? a : b });
+		
+		var sortedReactions = Object.keys(reactions).sort(function(a,b){return reactions[b] - reactions[a]})
+
+		var biggestReaction = sortedReactions.shift();
 		var biggestReactionColor = getReactionColor(biggestReaction);
 		var biggestReactionCount = reactions[biggestReaction]
 		
-		delete reactions[biggestReaction];
-		
-		var secondBiggestReaction = Object.keys(reactions).reduce(function(a, b){ return reactions[a] > reactions[b] ? a : b });
+		var secondBiggestReaction = sortedReactions.shift();
 		var secondBiggestReactionColor = getReactionColor(secondBiggestReaction);
 		var secondBiggestReactionCount = reactions[secondBiggestReaction];
-
+		
 		 return colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount);
 	}
 }
@@ -19,7 +20,6 @@ var PulseHelpers = {
 function colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount){
 
 	var ramp = d3.scaleLinear().domain([-secondBiggestReactionCount,0,biggestReactionCount]).range([secondBiggestReactionColor,'#d3d3d3',biggestReactionColor]);
-	console.log(ramp((biggestReactionCount + (-secondBiggestReactionCount)) / 2))
 	return ramp((biggestReactionCount + (-secondBiggestReactionCount)) / 2)
 	
 }

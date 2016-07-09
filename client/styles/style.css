@@ -2,13 +2,9 @@
 Pulse Entry
 *****************************/
 
-#PulseEntryContainer {
-    width: 300px;
-    height: 300px;
-    transform: translateX(-50%) translateY(-50%);
-    left: 50%;
-    top: 50%;
-    position: absolute;
+.orb-entry {
+    margin: 50px 0;
+    height:400px;
 }
 
 .pulsatingCircle {
@@ -35,7 +31,7 @@ Pulse Entry
 .firstCircle {
     width: 10px;
     height: 10px;
-    margin: -5px 0 0 -5px;
+    margin: -5.5px 0 0 -5.5px;
     background-color: #ccc;
     animation: 2000ms pulse 500ms ease-in-out infinite;
     -webkit-animation: 2000ms pulse 500ms ease-in-out infinite

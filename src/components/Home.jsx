@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import PulseEntry from './PulseGrid/PulseEntry/PulseEntry'
+import PulseGrid from './PulseGrid/PulseGrid';
+import Nav from './NavBar/Nav';
 
 
 
@@ -15,7 +15,10 @@ class Home extends React.Component {
   
   render() {
     return (
-      <PulseEntry/>
+      <div>
+        <Nav/>
+        <PulseGrid/>
+      </div>
     );
   }
 }
