@@ -4,3 +4,4 @@ bower_components/
 .DS_Store
 client/bundle.js.map
 client/bundle.js
+.node-xmlhttprequest-*

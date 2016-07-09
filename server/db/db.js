@@ -10,10 +10,10 @@ firebase.initializeApp({
 
 
 /* TODO: use a universal timezone! */
-var dateNow = moment().format('MM/DD/YY')
+var dateNow = moment().format('MM-DD-YY')
 
 var db = firebase.database();
-var ref = db.ref("/data/" + dateNow);
+var ref = db.ref(dateNow);
 
 module.exports = function(data) {
 
@@ -25,16 +25,16 @@ module.exports = function(data) {
       published_date: item.published_date,
       reactions: {
         happy: 0,
-        sad: 0
+        sad: 0,
+        angry: 0,
+        scared: 0
       }
     };
     return obj;
-
   })
 
-  /* TODO: make sure this is correct way to set array of data */
-  //mappedData.forEach(function(article){
-    ref.push(mappedData)
-  //});
+  mappedData.forEach(function(article){
+    ref.push(article)
+  });
 
 }
