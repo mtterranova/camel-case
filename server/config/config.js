@@ -1,4 +1,6 @@
-module.exports = {
+var config = {};
+
+config.firebase = {
     "type": "service_account",
     "project_id": "camel-case-e34bc",
     "private_key_id": "309859918736c69a437b0fba5fc8c34a1bf7ccf3",
@@ -10,3 +12,9 @@ module.exports = {
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/camel-case%40camel-case-e34bc.iam.gserviceaccount.com"
   }
+
+config.nyt = {
+  apiKey: 'f507f70d25c67d529f25cbd715cc5de9:5:67901820'
+};
+
+module.exports = config;
