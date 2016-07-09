@@ -10,11 +10,12 @@ Pulse Entry
 .pulsatingCircle {
     width: 25px;
     height: 25px;
-    display: block;
-    position: relative;
-    margin: 10% auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
     transform: scale(5, 5);
     -webkit-transform: scale(5, 5);
+    
 }
 
 .firstCircle,
@@ -102,3 +103,86 @@ Pulse Entry
     animation: 2000ms pulseIn 500ms ease-in-out infinite;
     -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite
 }
+
+
+
+/************************
+ClickMenuAnimations
+***************************/
+@keyframes fill {
+  from {
+    width: 0px;
+    margin-left: 0;
+    margin-top: 0;
+    height: 0px;
+  }
+  to {
+    width: 400px;
+    margin-left: -200px;
+    margin-top: -200px;
+    height: 400px;
+  }
+}
+
+
+
+#pulseEntryHover {
+    width:20px;
+    height:20px;
+    top:52.5%;
+    left:51.5%;
+    background-color: transparent;
+    transform: translateX(-50%) translateY(-50%);
+    position:absolute;
+    border-radius: 50%;
+    animation: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out; 
+}
+
+#pulseEntryHover:hover {
+    width: 100%;
+    height:100%;
+    border-radius: 1%;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+
+
+#articleTitle{
+    width: 0px;
+    height: 0px;
+    font-size: 40px;
+    
+}
+
+#articleAbstract{
+    
+}
+
+#reactionBar{
+    width: 30%;
+    height: 25px;
+    margin-left: 20px;
+}
+
+#articleTitle, #articleAbstract, #reactionBar{
+    color:transparent;
+    animation: all 2.0s ease-in-out;
+    -webkit-transition: all 2.0s ease-in-out;
+}
+
+#reactionsButtonList{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: absolute;
+}
+
+#reactionsButtonList li {
+    float:left;
+    display:inline;
+}
+
+
+
+

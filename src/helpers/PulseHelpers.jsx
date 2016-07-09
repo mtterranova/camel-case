@@ -15,7 +15,10 @@ var PulseHelpers = {
 		
 		 return colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount);
 	}
+
 }
+
+
 
 function colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount){
 
@@ -29,13 +32,13 @@ function colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestR
 function getReactionColor(reaction){
 	switch(reaction){
 		case 'sad':
-			console.log('return sad blue')
+			
 			return colors.sadBlue;
 		case 'angry':
-			console.log('return depressing red')
+			
 			return colors.depressingRed;
 		case 'happy':
-			console.log('return happy green')
+			
 			return colors.happyGreen;
 		default:
 			break
