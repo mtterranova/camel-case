@@ -2,4 +2,5 @@ node_modules/
 bower_components/
 *.log
 .DS_Store
-src/bundle.js.map
+client/bundle.js.map
+client/bundle.js
