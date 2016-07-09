@@ -3,7 +3,7 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
-    filename: '.client/bundle.js'
+    filename: './client/bundle.js'
   },
   module: {
     loaders: [
