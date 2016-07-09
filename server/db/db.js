@@ -9,8 +9,8 @@ firebase.initializeApp({
 });
 
 
+/* TODO: use a universal timezone! */
 var dateNow = moment().format('MM/DD/YY')
-console.log(dateNow)
 
 var db = firebase.database();
 var ref = db.ref("/data/" + dateNow);
