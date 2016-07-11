@@ -2,18 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PulseEntryOrb from './PulseEntryOrb';
 import PulseEntryHover from '../PulseEntryHover/PulseEntryHover'
-import $ from 'jquery'
+
+
 
 class PulseEntry extends React.Component {
   constructor(props) {
     super(props);
-  
+
     this.state = {
       onOrbClick: false
     }
 
     this.handleOrbClick = this.handleOrbClick.bind(this);
-    
+
   }
 
    handleOrbClick(reactions){
@@ -22,8 +23,7 @@ class PulseEntry extends React.Component {
     })
    }
 
-  
-  
+
   render() {
 
     let show = this.state.onOrbClick ?  'show'  : 'hide' ;
