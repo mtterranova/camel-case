@@ -146,7 +146,7 @@ ClickMenuAnimations
     -webkit-transition: all 0.5s ease-in-out;
 }
 
-#pulseEntryHover:hover #reactionBar{
+#pulseEntryHover:hover #reactionBar {
     display:inherit;
 }
 
@@ -164,7 +164,7 @@ ClickMenuAnimations
     width: 30%;
     height: 25px;
     margin-left: 20px;
-    padding-top: 10px;
+    padding-top: 10px;  
 }
 
 #articleTitle, #articleAbstract, #reactionBar, #reactionsButtonL{
