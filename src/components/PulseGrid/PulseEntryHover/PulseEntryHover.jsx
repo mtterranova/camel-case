@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PulseHelpers from '../../../helpers/PulseHelpers';
 import ReactionBar from './ReactionBar';
-import $ from 'jquery';
 
 class PulseEntryHover extends React.Component {
   constructor(props) {
