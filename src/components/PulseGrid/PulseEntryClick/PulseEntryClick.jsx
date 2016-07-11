@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class PulseEntryHover extends React.Component {
+class PulseEntryClick extends React.Component {
   
   render() {
     return (
@@ -18,4 +18,4 @@ class PulseEntryHover extends React.Component {
   }
 }
 
-module.exports = PulseEntryHover
+module.exports = PulseEntryClick

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PulseEntryOrb from './PulseEntryOrb';
-import PulseEntryHover from '../PulseEntryHover/PulseEntryHover';
+import PulseEntryClick from '../PulseEntryClick/PulseEntryClick';
 
 class PulseEntry extends React.Component {
   constructor(props) {
@@ -17,8 +17,6 @@ class PulseEntry extends React.Component {
   }
 
    handleOrbClick(reactions){
-    console.log('handle orbClick');
-    console.log(reactions,"reactions")
     this.setState({
       onOrbClick: !this.state.onOrbClick
     })
@@ -35,7 +33,7 @@ class PulseEntry extends React.Component {
            className="col-md-4 orb-entry">
           <PulseEntryOrb reactions={this.props.articleData.reactions} handleOrbClick={this.handleOrbClick}/>
           <div className={show} >
-            <PulseEntryHover articleData={this.props.articleData}/>
+            <PulseEntryClick articleData={this.props.articleData}/>
           </div>
       </div>
     );
