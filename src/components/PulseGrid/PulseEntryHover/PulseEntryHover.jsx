@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PulseHelpers from '../../../helpers/PulseHelpers';
 import ReactionBar from './ReactionBar';
-import $ from 'jquery';
 
 class PulseEntryHover extends React.Component {
   constructor(props) {
@@ -17,12 +16,10 @@ class PulseEntryHover extends React.Component {
   }
 
   handleMouseOver(){
-    
     this.setState({
       backgroundColor: this.state.reactionColor,
       textColor: 'white'
     })
-    
   }
 
   handleMouseLeave(){
@@ -33,9 +30,9 @@ class PulseEntryHover extends React.Component {
   }
 
   render() {
-    
+
     return (
-      <div  className="pulseEntryHover" onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} style={{'backgroundColor': this.state.backgroundColor}}> 
+      <div  className="pulseEntryHover" onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} style={{'backgroundColor': this.state.backgroundColor}}>
         <h1 className="articleTitle" style={{color:this.state.textColor}}>{this.props.articleData.title}</h1>
         <p className="articleAbstract" style={{color:this.state.textColor}}>{this.props.articleData.abstract}</p>
         <ReactionBar className="reactionBar" articleData={this.props.articleData}/>
