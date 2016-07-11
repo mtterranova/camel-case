@@ -6,13 +6,13 @@ import PulseEntryClick from '../PulseEntryClick/PulseEntryClick';
 class PulseEntry extends React.Component {
   constructor(props) {
     super(props);
-  
+
     this.state = {
       onOrbClick: false
     }
 
     this.handleOrbClick = this.handleOrbClick.bind(this);
-    
+
 
   }
 
@@ -22,14 +22,14 @@ class PulseEntry extends React.Component {
     })
    }
 
-   
-  
+
+
   render() {
 
     let show = this.state.onOrbClick ?  'show'  : 'hide';
 
     return (
-      <div  
+      <div
            className="col-md-4 orb-entry">
           <PulseEntryOrb reactions={this.props.articleData.reactions} handleOrbClick={this.handleOrbClick}/>
           <div className={show} >

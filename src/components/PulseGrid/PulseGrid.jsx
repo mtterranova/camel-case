@@ -1,32 +1,37 @@
-import React from 'react'
+import React from 'react';
+
+import { connect } from 'react-redux';
+import * as actions from '../../actions/actions'
+
 import PulseEntry from './PulseEntry/PulseEntry'
 import exampleData from '../../exampleData'
 
 class PulseGrid extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
 
-		}
+	componentDidMount() {
+		this.props.fetchArticles();
 	}
 
-mapArticles(){
-	return exampleData["7/8/2016"].map(function(article,index){
-		return <PulseEntry key={index} articleData={article}/>
-	})
+	mapArticles(){
+		// exampleData["7/8/2016"]
+		return this.props.articles && this.props.articles.map(function(article,index){
+			return <PulseEntry key={index} articleData={article}/>
+		})
+	}
+
+	render(){
+		return (
+			<div className="container">
+			{ this.mapArticles() }
+			</div>
+		)
+	}
 }
 
-
-render(){
-	
-	let articles = this.mapArticles();
-	
-	return (
-		<div className="container">
-			{ articles }
-		</div>
-	)
-}
+function mapStateToProps(state) {
+	return {
+		articles: state.fetchArticlesReducer.data
+	};
 }
 
-module.exports = PulseGrid
+export default connect(mapStateToProps, actions)(PulseGrid);
