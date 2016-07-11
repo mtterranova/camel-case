@@ -29622,6 +29622,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(_Nav2.default, null),
 	        _react2.default.createElement(_PulseGrid2.default, null)
 	      );
 	    }
@@ -29631,8 +29632,6 @@
 	}(_react2.default.Component);
 	
 	module.exports = Home;
-	
-	// removed <Nav />
 
 /***/ },
 /* 265 */
@@ -56585,6 +56584,10 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -56626,32 +56629,41 @@
 	var Nav = function (_React$Component) {
 		_inherits(Nav, _React$Component);
 	
-		function Nav(props) {
+		function Nav() {
 			_classCallCheck(this, Nav);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
-	
-			_this.state = {};
-	
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).apply(this, arguments));
 		}
 	
 		_createClass(Nav, [{
+			key: 'handleDate',
+			value: function handleDate(date) {
+				return (0, _moment2.default)(date).format('MMMM Do, YYYY');
+			}
+		}, {
+			key: 'handleDateChange',
+			value: function handleDateChange(a, b) {
+				console.log('handleDateChange');
+				console.log(a);
+				console.log(b);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 	
 				(0, _reactTapEventPlugin2.default)();
-				// let date = {date: moment(new Date()).format()};
 	
 				return _react2.default.createElement(
 					_MuiThemeProvider2.default,
 					null,
 					_react2.default.createElement(_AppBar2.default, {
 						title: 'News Pulse',
-						iconElementLeft: _react2.default.createElement('h', null),
 						iconElementRight: _react2.default.createElement(_DatePicker2.default, {
+							onChange: this.handleDateChange,
+							maxDate: new Date(),
+							formatDate: this.handleDate.bind(this),
 							defaultDate: new Date(),
-							inputStyle: { color: 'white' },
+							inputStyle: { 'color': 'white', 'text-align': 'center', 'width': '100%' },
 							autoOk: true
 						})
 					})
@@ -56662,7 +56674,7 @@
 		return Nav;
 	}(_react2.default.Component);
 	
-	module.exports = Nav;
+	exports.default = Nav;
 
 /***/ },
 /* 454 */

@@ -6,38 +6,38 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import AppBar from 'material-ui/AppBar';
 import moment from 'moment';
 
-class Nav extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			
-		};
+export default class Nav extends React.Component {
 
-
+	handleDate(date) {
+		return moment(date).format('MMMM Do, YYYY')
 	}
 
+	handleDateChange(a, b) {
+		console.log('handleDateChange')
+		console.log(a)
+		console.log(b)
+	}
 
 	render(){
 
 		injectTapEventPlugin();
-		// let date = {date: moment(new Date()).format()};
 
 		return(
 			<MuiThemeProvider>
 				 <AppBar
 				    title = "News Pulse"
-		    		iconElementLeft = {<h></h>}
 				    iconElementRight = {
 				    	<DatePicker
-				    		defaultDate = { new Date() }
-					    	inputStyle = { {color: 'white'} }
-					    	autoOk = { true }
-					    /> 
+								onChange={ this.handleDateChange }
+								maxDate= { new Date() }
+				    		formatDate = { this.handleDate.bind(this) }
+				    		defaultDate={ new Date() }
+								inputStyle = {{ 'color': 'white', 'text-align': 'center', 'width': '100%' }}
+					    	autoOk={ true }
+					    />
 					}
 				  />
-			</MuiThemeProvider>  			
+			</MuiThemeProvider>
   		)
 	}
 }
-
-module.exports = Nav;

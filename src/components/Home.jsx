@@ -8,6 +8,7 @@ class Home extends React.Component {
 
     return (
       <div>
+        <Nav />
         <PulseGrid/>
       </div>
     );
@@ -16,5 +17,3 @@ class Home extends React.Component {
 }
 
 module.exports = Home
-
-// removed <Nav />
