@@ -13,7 +13,6 @@ class PulseGrid extends React.Component {
 	}
 
 	mapArticles(){
-		// exampleData["7/8/2016"]
 		return this.props.articles && this.props.articles.map(function(article,index){
 			return <PulseEntry key={index} articleData={article}/>
 		})
