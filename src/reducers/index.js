@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-// import { routerReducer } from 'react-router-redux';
 
-//import other reduces into root here
+import fetchArticlesReducer from './fetchArticlesReducer';
 
 const rootReducer = combineReducers({
-  // add reducers
-  // router: routerReducer
-});
+  fetchArticlesReducer
+})
 
 export default rootReducer;

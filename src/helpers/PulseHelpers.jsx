@@ -2,17 +2,17 @@ import _ from 'lodash'
 
 var PulseHelpers = {
 	colorPicker: function(reactions){
-		
+
 		var sortedReactions = Object.keys(reactions).sort(function(a,b){return reactions[b] - reactions[a]})
 
 		var biggestReaction = sortedReactions.shift();
 		var biggestReactionColor = getReactionColor(biggestReaction);
 		var biggestReactionCount = reactions[biggestReaction]
-		
+
 		var secondBiggestReaction = sortedReactions.shift();
 		var secondBiggestReactionColor = getReactionColor(secondBiggestReaction);
 		var secondBiggestReactionCount = reactions[secondBiggestReaction];
-		
+
 		 return colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount);
 	}
 }
@@ -21,7 +21,7 @@ function colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestR
 
 	var ramp = d3.scaleLinear().domain([-secondBiggestReactionCount,0,biggestReactionCount]).range([secondBiggestReactionColor,'#d3d3d3',biggestReactionColor]);
 	return ramp((biggestReactionCount + (-secondBiggestReactionCount)) / 2)
-	
+
 }
 
 
@@ -29,13 +29,10 @@ function colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestR
 function getReactionColor(reaction){
 	switch(reaction){
 		case 'sad':
-			console.log('return sad blue')
 			return colors.sadBlue;
 		case 'angry':
-			console.log('return depressing red')
 			return colors.depressingRed;
 		case 'happy':
-			console.log('return happy green')
 			return colors.happyGreen;
 		default:
 			break
