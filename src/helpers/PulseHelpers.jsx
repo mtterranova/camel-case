@@ -12,7 +12,8 @@ var PulseHelpers = {
 		var secondBiggestReaction = sortedReactions.shift();
 		var secondBiggestReactionColor = getReactionColor(secondBiggestReaction);
 		var secondBiggestReactionCount = reactions[secondBiggestReaction];
-		
+		console.log('Reactions:' , reactions);
+		console.log('Return Background Color: ', colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount))
 		 return colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestReactionColor,secondBiggestReactionCount);
 	}
 
@@ -32,14 +33,14 @@ function colorConverter(biggestReactionColor,biggestReactionCount,secondBiggestR
 function getReactionColor(reaction){
 	switch(reaction){
 		case 'sad':
-			
 			return colors.sadBlue;
 		case 'angry':
-			
 			return colors.depressingRed;
 		case 'happy':
-			
 			return colors.happyGreen;
+		case 'scared':
+			console.log('return scary black');
+			return colors.scaryBlack;
 		default:
 			break
 	}
@@ -50,7 +51,8 @@ function getReactionColor(reaction){
  var colors = {
       depressingRed: '#FF6C6B',
       happyGreen: '#4CCC92',
-      sadBlue:'#2EB3C9'
+      sadBlue:'#2EB3C9',
+      scaryBlack: '#000000'
     }
 
 module.exports = PulseHelpers;

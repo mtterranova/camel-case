@@ -31,8 +31,8 @@ class ReactionBar extends React.Component{
   			backgroundColor: 'transparent'
 		};
 		return (
-			<div id="reactionBar">
-				<ul id="reactionsButtonList">
+			<div className="reactionBar">
+				<ul className="reactionsButtonList">
 					<li><RaisedButton label="Happy" style={style}/></li>
 					<li><RaisedButton label="Sad" style={style} /></li>
 					<li><RaisedButton label="Angry" style={style} /></li>

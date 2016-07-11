@@ -3,8 +3,8 @@ Pulse Entry
 *****************************/
 
 .orb-entry {
-    margin: 50px 0;
-    height:400px;
+    margin: 0px 0;
+    height:300px;
 }
 
 .pulsatingCircle {
@@ -106,27 +106,9 @@ Pulse Entry
 
 
 
-/************************
-ClickMenuAnimations
-***************************/
-@keyframes fill {
-  from {
-    width: 0px;
-    margin-left: 0;
-    margin-top: 0;
-    height: 0px;
-  }
-  to {
-    width: 400px;
-    margin-left: -200px;
-    margin-top: -200px;
-    height: 400px;
-  }
-}
 
 
-
-#pulseEntryHover {
+.pulseEntryHover {
     width:20px;
     height:20px;
     top:52.5%;
@@ -139,41 +121,54 @@ ClickMenuAnimations
     -webkit-transition: all 0.5s ease-in-out; 
 }
 
-#pulseEntryHover:hover {
+.pulseEntryHover:hover {
     width: 100%;
     height:100%;
     border-radius: 1%;
     -webkit-transition: all 0.5s ease-in-out;
 }
 
-#pulseEntryHover:hover #reactionBar {
-    display:inherit;
+
+
+.pulseEntryHover:hover .reactionBar {
+  display:inherit;
 }
 
-
-#articleTitle{
-    font-size: 40px;
-    
+.pulseEntryHover:hover .articleTitle {
+    font-size:28px;
+  display:inherit;
 }
 
-#articleAbstract{
+.pulseEntryHover:hover .articleAbstract {
+    font-size:12px;
+  display:inherit;
+}
+
+.articleTitle{
+    font-size: 0px;
+}
+
+.articleAbstract{
+    font-size:0px;
     padding-left: 15px;
+
 }
 
-#reactionBar{
+.reactionBar{
+    display:none;
     width: 30%;
     height: 25px;
     margin-left: 20px;
     padding-top: 10px;  
 }
 
-#articleTitle, #articleAbstract, #reactionBar, #reactionsButtonL{
+.articleTitle, .articleAbstract, .reactionBar, .reactionsButtonList{
     color:transparent;
-    animation: all 2.0s ease-in-out;
-    -webkit-transition: all 2.0s ease-in-out;
+    animation: color 2.5s ease-in-out;
+    -webkit-transition: color 2.5s ease-in-out;
 }
 
-#reactionsButtonList{
+.reactionsButtonList{
     list-style: none;
     margin: 0;
     padding: 0;
@@ -181,7 +176,7 @@ ClickMenuAnimations
     position: absolute;
 }
 
-#reactionsButtonList li {
+.reactionsButtonList li {
     float:left;
     display:inline;
 }

@@ -17,7 +17,7 @@ class PulseEntryHover extends React.Component {
   }
 
   handleMouseOver(){
-    console.log('handle mouse over');
+    
     this.setState({
       backgroundColor: this.state.reactionColor,
       textColor: 'white'
@@ -26,7 +26,6 @@ class PulseEntryHover extends React.Component {
   }
 
   handleMouseLeave(){
-    console.log('handle mouse leave');
     this.setState({
       backgroundColor: 'transparent',
       textColor: 'transparent'
@@ -36,10 +35,10 @@ class PulseEntryHover extends React.Component {
   render() {
     
     return (
-      <div  id="pulseEntryHover" onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} style={{'backgroundColor': this.state.backgroundColor}}> 
-        <h1 id="articleTitle" style={{color:this.state.textColor}}>{this.props.articleData.title}</h1>
-        <p id="articleAbstract" style={{color:this.state.textColor}}>{this.props.articleData.abstract}</p>
-        <ReactionBar id="reactionBar" articleData={this.props.articleData}/>
+      <div  className="pulseEntryHover" onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} style={{'backgroundColor': this.state.backgroundColor}}> 
+        <h1 className="articleTitle" style={{color:this.state.textColor}}>{this.props.articleData.title}</h1>
+        <p className="articleAbstract" style={{color:this.state.textColor}}>{this.props.articleData.abstract}</p>
+        <ReactionBar className="reactionBar" articleData={this.props.articleData}/>
       </div>
     );
   }
