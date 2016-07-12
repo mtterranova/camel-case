@@ -2,7 +2,7 @@ import React from 'react';
 import PulseGrid from './PulseGrid/PulseGrid';
 import Nav from './NavBar/Nav';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
 
   render() {
 
@@ -15,5 +15,3 @@ class Home extends React.Component {
 
   }
 }
-
-module.exports = Home
