@@ -13,9 +13,11 @@ firebase.initializeApp({
 var dateNow = moment().format('MM-DD-YY')
 
 var db = firebase.database();
-var ref = db.ref(dateNow);
 
 module.exports = function(data) {
+
+  //add section after nowNow
+  var ref = db.ref(dateNow);
 
   var mappedData = data.map(function(item){
     var obj = {
@@ -23,6 +25,7 @@ module.exports = function(data) {
       abstract: item.abstract,
       url: item.url,
       published_date: item.published_date,
+      section: item.section,
       reactions: {
         happy: 0,
         sad: 0,

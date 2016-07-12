@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import fetchArticlesReducer from './fetchArticlesReducer';
+import fetchSectionsReducer from './fetchSectionsReducer';
 
 const rootReducer = combineReducers({
-  fetchArticlesReducer
+  fetchArticlesReducer,
+  fetchSectionsReducer
 })
 
 export default rootReducer;

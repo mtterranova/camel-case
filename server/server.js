@@ -14,10 +14,12 @@ app.listen(port, function(){
   console.log('server listening on port 3000');
 });
 
-//on some interval, pull NYT data
-// var date = new Date(2016, 6, 7, 16, 15, 45);
-// var j = schedule.scheduleJob(date, function(){
-//   console.log('npm schedule invoked api call');
-  // calls a function which triggers NYT module to pull data
-  // nyt();
-// });
+var sections = ['home','world','national','politics','nyregion','business','opinion','technology','science','health','sports','arts','fashion','dining','travel','magazine','realestate']
+
+var date = new Date(2016, 6, 12, 14, 01, 10);
+
+schedule.scheduleJob(date, function(){
+  sections.forEach(function(section){
+    nyt(section);
+  })
+});

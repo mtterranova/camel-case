@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions'
 
 import PulseEntry from './PulseEntry/PulseEntry'
-import exampleData from '../../exampleData'
 
 class PulseGrid extends React.Component {
 
@@ -20,7 +19,7 @@ class PulseGrid extends React.Component {
 
 	render(){
 		return (
-			<div className="container">
+			<div className="container-fluid">
 			{ this.mapArticles() }
 			</div>
 		)
