@@ -33,8 +33,6 @@ Pulse Entry
   height: 10px;
   margin: -5.5px 0 0 -5.5px;
   background-color: #ccc;
-  animation: 2000ms pulse 500ms ease-in-out infinite;
-  -webkit-animation: 2000ms pulse 500ms ease-in-out infinite;
 }
 
 
@@ -43,8 +41,6 @@ Pulse Entry
   height: 16px;
   margin: -9px 0 0 -9px;
   border: 1px solid #ccc;
-  animation: 2000ms pulseIn ease-in-out infinite;
-  -webkit-animation: 2000ms pulseIn ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -98,22 +94,86 @@ Pulse Entry
   height: 24px;
   border: 1px solid #ccc;
   margin: -13px 0 0 -13px;
-  animation: 2000ms pulseIn 500ms ease-in-out infinite;
-  -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite;
 }
 
+/********************
+LowCircle Subject
+********************/
+
+.lowFirstCircle {
+    animation: 3500ms pulse 1500ms ease-in-out infinite;
+    -webkit-animation: 3500ms pulse 1500ms ease-in-out infinite;
+}
+
+.lowSecondCircle {
+    animation: 2000ms pulse 3000ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 3000ms ease-in-out infinite;
+}
+
+.lowThirdCircle {
+    animation: 3000ms pulse 2000ms ease-in-out infinite;
+    -webkit-animation: 3000ms pulse 2000ms ease-in-out infinite;
+}
+
+/********************
+MidCircle Subject
+********************/
+
+.midFirstCircle {
+    animation: 2000ms pulse 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 500ms ease-in-out infinite;
+}
+
+.midSecondCircle {
+    animation: 2000ms pulseIn ease-in-out infinite;
+    -webkit-animation: 2000ms pulseIn ease-in-out infinite;
+}
+
+.midThirdCircle {
+     animation: 2000ms pulseIn 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite;
+}
+
+
+/*****************
+High Circle Subject
+******************/
+
+.highFirstCircle {
+     animation: 1000ms pulse 250ms ease-in-out infinite;
+    -webkit-animation: 1000ms pulse 250ms ease-in-out infinite;
+}
+
+.highSecondCircle {
+    animation: 625ms pulse 625ms ease-in-out infinite;
+    -webkit-animation: 625ms pulse 625ms ease-in-out infinite;
+}
+
+.highThirdCircle {
+    animation: 800ms pulse 450ms ease-in-out infinite;
+    -webkit-animation: 800ms pulse 450ms ease-in-out infinite;
+}
+
+
+
+
+/********************************************
+Pulse Entry Hover
+********************************************/
+
+
 .pulseEntryHover {
-  width:40px;
-  height:40px;
+  width:50px;
+  height:50px;
   top:52.5%;
-  left:50%;
-  padding: 10px;
-  background-color: transparent;
+  left:51.5%;
+  background-color: black;
+  z-index: 99;
   transform: translateX(-50%) translateY(-50%);
   position:absolute;
   border-radius: 50%;
   animation: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out; 
 }
 
 .pulseEntryHover:hover {
@@ -159,4 +219,93 @@ Pulse Entry
   color:transparent;
   animation: color 1.5s ease-in-out;
   -webkit-transition: color 1.5s ease-in-out;
+}
+
+.retranslate {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/******************************
+Category Menu
+******************************/
+
+#CategoryMenu {
+
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+    border-radius: 3%;
+    
+}
+
+.addFadeIn {
+    animation: 2000ms fadeIn ease-in-out;
+    animation-fill-mode:forwards;
+    -webkit-transition: 2000ms fadeIn ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    z-index: 150;
+
+.retranslate {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/******************************
+Category Menu
+******************************/
+
+#CategoryMenu {
+
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+    border-radius: 3%;
+    
+}
+
+.addFadeIn {
+    animation: 2000ms fadeIn ease-in-out;
+    animation-fill-mode:forwards;
+    -webkit-transition: 2000ms fadeIn ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    z-index: 150;
+
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0.7;
+    }
 }
