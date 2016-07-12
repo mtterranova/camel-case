@@ -160,3 +160,47 @@ Pulse Entry
   animation: color 1.5s ease-in-out;
   -webkit-transition: color 1.5s ease-in-out;
 }
+
+.retranslate {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/******************************
+Category Menu
+******************************/
+
+#CategoryMenu {
+
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+    border-radius: 3%;
+    
+}
+
+.addFadeIn {
+    animation: 2000ms fadeIn ease-in-out;
+    animation-fill-mode:forwards;
+    -webkit-transition: 2000ms fadeIn ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    z-index: 150;
+
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
