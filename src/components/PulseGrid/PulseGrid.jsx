@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions'
 
 import PulseEntry from './PulseEntry/PulseEntry'
-import exampleData from '../../exampleData'
+import PulseHelpers from '../../helpers/PulseHelpers';
+
 
 class PulseGrid extends React.Component {
 
@@ -13,9 +14,13 @@ class PulseGrid extends React.Component {
 	}
 
 	mapArticles(){
-		// exampleData["7/8/2016"]
+		var articles = this.props.articles;
+
 		return this.props.articles && this.props.articles.map(function(article,index){
-			return <PulseEntry key={index} articleData={article}/>
+			if(index < 5){
+				var popularityStatus = PulseHelpers.popularityStatus(article, articles);
+				return <PulseEntry key={index} articleData={article} articlePopularity={popularityStatus}/>
+			}
 		})
 	}
 

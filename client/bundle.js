@@ -29775,9 +29775,9 @@
 	
 	var _PulseEntry2 = _interopRequireDefault(_PulseEntry);
 	
-	var _exampleData = __webpack_require__(455);
+	var _PulseHelpers = __webpack_require__(270);
 	
-	var _exampleData2 = _interopRequireDefault(_exampleData);
+	var _PulseHelpers2 = _interopRequireDefault(_PulseHelpers);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -29806,9 +29806,13 @@
 		}, {
 			key: 'mapArticles',
 			value: function mapArticles() {
-				// exampleData["7/8/2016"]
+				var articles = this.props.articles;
+	
 				return this.props.articles && this.props.articles.map(function (article, index) {
-					return _react2.default.createElement(_PulseEntry2.default, { key: index, articleData: article });
+					if (index < 5) {
+						var popularityStatus = _PulseHelpers2.default.popularityStatus(article, articles);
+						return _react2.default.createElement(_PulseEntry2.default, { key: index, articleData: article, articlePopularity: popularityStatus });
+					}
 				});
 			}
 		}, {
@@ -29898,7 +29902,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'col-md-4 orb-entry' },
-	        _react2.default.createElement(_PulseEntryOrb2.default, { reactions: this.props.articleData.reactions, handleOrbClick: this.handleOrbClick }),
+	        _react2.default.createElement(_PulseEntryOrb2.default, { reactions: this.props.articleData.reactions, handleOrbClick: this.handleOrbClick, articlePopularity: this.props.articlePopularity }),
 	        _react2.default.createElement(_PulseEntryHover2.default, { articleData: this.props.articleData })
 	      );
 	    }
@@ -29959,15 +29963,40 @@
 	      var _this2 = this;
 	
 	      var color = _PulseHelpers2.default.colorPicker(this.props.reactions);
+	      this.props.articlePopularity;
+	
+	      var firstCircleClass;
+	      var secondCircleClass;
+	      var thirdCircleClass;
+	
+	      function changeCircleClass(first, second, third) {
+	        firstCircleClass = first;
+	        secondCircleClass = second;
+	        thirdCircleClass = third;
+	      }
+	
+	      switch (this.props.articlePopularity) {
+	        case 'low':
+	          changeCircleClass('lowFirstCircle', 'lowSecondCircle', 'lowThirdCircle');
+	          break;
+	        case 'mid':
+	          changeCircleClass('midFirstCircle', 'midSecondCircle', 'midThirdCircle');
+	          break;
+	        case 'high':
+	          changeCircleClass('highFirstCircle', 'highSecondCircle', 'highThirdCircle');
+	          break;
+	        default:
+	          break;
+	      }
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'pulsatingCircle', onClick: function onClick() {
 	            return _this2.props.handleOrbClick(_this2.props.reactions);
 	          } },
-	        _react2.default.createElement('span', { className: 'firstCircle', style: { 'backgroundColor': color } }),
-	        _react2.default.createElement('span', { className: 'secondCircle', style: { 'borderColor': color } }),
-	        _react2.default.createElement('span', { className: 'thirdCircle', style: { 'borderColor': color } })
+	        _react2.default.createElement('span', { className: 'firstCircle ' + firstCircleClass, style: { 'backgroundColor': color } }),
+	        _react2.default.createElement('span', { className: 'secondCircle ' + secondCircleClass, style: { 'borderColor': color } }),
+	        _react2.default.createElement('span', { className: 'thirdCircle ' + thirdCircleClass, style: { 'borderColor': color } })
 	      );
 	    }
 	  }]);
@@ -30005,8 +30034,51 @@
 			var secondBiggestReactionCount = reactions[secondBiggestReaction];
 	
 			return colorConverter(biggestReactionColor, biggestReactionCount, secondBiggestReactionColor, secondBiggestReactionCount);
+		},
+	
+		popularityStatus: function popularityStatus(article, articles) {
+			var totalArticlesReactionCountAvg = articleReactionsAverage(articles);
+			var singleArticleReactionCount = articleReactionCount(article);
+			var status = relativeArticleStatus(singleArticleReactionCount, totalArticlesReactionCountAvg);
+			return status;
 		}
 	
+	};
+	
+	function articleReactionsAverage(articles) {
+		var reactionsSum = articles.map(function (article, index) {
+			if (articleReactionCount !== 0) {
+				return articleReactionCount(article);
+			}
+		}).reduce(function (prev, curr) {
+			return prev + curr;
+		});
+		return reactionsSum / articles.length;
+	}
+	
+	function articleReactionCount(article) {
+		return Object.values(article.reactions).reduce(function (previous, curr) {
+			return previous + curr;
+		});
+	}
+	
+	function relativeArticleStatus(singleArticleReactionCount, totalArticleReactionAvg) {
+		var relativePercentage = singleArticleReactionCount / totalArticleReactionAvg * 100;
+		if (relativePercentage < 80) {
+			return 'low';
+		} else if (relativePercentage >= 80 && relativePercentage <= 120) {
+			return 'mid';
+		} else if (relativePercentage > 120) {
+			return 'high';
+		}
+	}
+	
+	Object.values = function (object) {
+		var values = [];
+		for (var property in object) {
+			values.push(object[property]);
+		}
+		return values;
 	};
 	
 	function colorConverter(biggestReactionColor, biggestReactionCount, secondBiggestReactionColor, secondBiggestReactionCount) {
@@ -30024,7 +30096,6 @@
 			case 'happy':
 				return colors.happyGreen;
 			case 'scared':
-				console.log('return scary black');
 				return colors.scaryBlack;
 			default:
 				break;
@@ -46520,7 +46591,6 @@
 	  _createClass(PulseEntryHover, [{
 	    key: 'handleMouseOver',
 	    value: function handleMouseOver() {
-	
 	      this.setState({
 	        backgroundColor: this.state.reactionColor,
 	        textColor: 'white'
@@ -46567,6 +46637,10 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -46585,6 +46659,14 @@
 	
 	var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 	
+	var _reactRedux = __webpack_require__(172);
+	
+	var _actions = __webpack_require__(259);
+	
+	var actions = _interopRequireWildcard(_actions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46596,14 +46678,10 @@
 	var ReactionBar = function (_React$Component) {
 		_inherits(ReactionBar, _React$Component);
 	
-		function ReactionBar(props) {
+		function ReactionBar() {
 			_classCallCheck(this, ReactionBar);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReactionBar).call(this, props));
-	
-			_this.state = {};
-	
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactionBar).apply(this, arguments));
 		}
 	
 		_createClass(ReactionBar, [{
@@ -46616,6 +46694,8 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var _this2 = this;
+	
 				var reactions = this.props.articleData.reactions;
 				var sortedReactions = Object.keys(reactions).sort(function (a, b) {
 					return reactions[b] - reactions[a];
@@ -46633,22 +46713,58 @@
 						_react2.default.createElement(
 							'li',
 							null,
-							_react2.default.createElement(_RaisedButton2.default, { label: 'Happy', style: style })
+							_react2.default.createElement(
+								_RaisedButton2.default,
+								{ style: style,
+									onClick: function onClick() {
+										return _this2.props.incrementReactions(_this2.props.articleData.id, 'happy', _this2.props.articleData.reactions.happy);
+									} },
+								'Happy (',
+								this.props.articleData.reactions.happy,
+								')'
+							)
 						),
 						_react2.default.createElement(
 							'li',
 							null,
-							_react2.default.createElement(_RaisedButton2.default, { label: 'Sad', style: style })
+							_react2.default.createElement(
+								_RaisedButton2.default,
+								{ style: style,
+									onClick: function onClick() {
+										return _this2.props.incrementReactions(_this2.props.articleData.id, 'sad', _this2.props.articleData.reactions.sad);
+									} },
+								'Sad (',
+								this.props.articleData.reactions.sad,
+								')'
+							)
 						),
 						_react2.default.createElement(
 							'li',
 							null,
-							_react2.default.createElement(_RaisedButton2.default, { label: 'Angry', style: style })
+							_react2.default.createElement(
+								_RaisedButton2.default,
+								{ style: style,
+									onClick: function onClick() {
+										return _this2.props.incrementReactions(_this2.props.articleData.id, 'angry', _this2.props.articleData.reactions.angry);
+									} },
+								'Angry (',
+								this.props.articleData.reactions.angry,
+								')'
+							)
 						),
 						_react2.default.createElement(
 							'li',
 							null,
-							_react2.default.createElement(_RaisedButton2.default, { label: 'Afraid', style: style })
+							_react2.default.createElement(
+								_RaisedButton2.default,
+								{ style: style,
+									onClick: function onClick() {
+										return _this2.props.incrementReactions(_this2.props.articleData.id, 'scared', _this2.props.articleData.reactions.scared);
+									} },
+								'Scared (',
+								this.props.articleData.reactions.scared,
+								')'
+							)
 						)
 					)
 				);
@@ -46661,9 +46777,7 @@
 	ReactionBar.childContextTypes = {
 		muiTheme: _react2.default.PropTypes.object
 	};
-	
-	
-	module.exports = ReactionBar;
+	exports.default = (0, _reactRedux.connect)(null, actions)(ReactionBar);
 
 /***/ },
 /* 275 */
@@ -56465,304 +56579,7 @@
 	exports.default = new Typography();
 
 /***/ },
-/* 455 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	module.exports = {
-	  "7/8/2016": [{
-	    "id": "-KM6gfVu_feZ_P7Td33n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 0,
-	      "sad": 20,
-	      "angry": 10,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td88n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 400,
-	      "sad": 70,
-	      "angry": 90,
-	      "scared": 10
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td77n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 10,
-	      "sad": 50,
-	      "angry": 50,
-	      "scared": 5
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td11n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 12,
-	      "sad": 41,
-	      "angry": 81,
-	      "scared": 30
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td22n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 2,
-	      "sad": 31,
-	      "angry": 41,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td33n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 0,
-	      "sad": 20,
-	      "angry": 10,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td88n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 400,
-	      "sad": 70,
-	      "angry": 90,
-	      "scared": 10
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td77n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 10,
-	      "sad": 50,
-	      "angry": 50,
-	      "scared": 5
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td11n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 12,
-	      "sad": 41,
-	      "angry": 81,
-	      "scared": 30
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td22n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 2,
-	      "sad": 31,
-	      "angry": 41,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td11n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 12,
-	      "sad": 41,
-	      "angry": 81,
-	      "scared": 30
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td22n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 2,
-	      "sad": 31,
-	      "angry": 41,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td33n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 0,
-	      "sad": 20,
-	      "angry": 10,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td88n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 400,
-	      "sad": 70,
-	      "angry": 90,
-	      "scared": 10
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td77n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 10,
-	      "sad": 50,
-	      "angry": 50,
-	      "scared": 5
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td11n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 12,
-	      "sad": 41,
-	      "angry": 81,
-	      "scared": 30
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td22n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 2,
-	      "sad": 31,
-	      "angry": 41,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td33n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 0,
-	      "sad": 20,
-	      "angry": 10,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td88n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 400,
-	      "sad": 70,
-	      "angry": 90,
-	      "scared": 10
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td77n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 10,
-	      "sad": 50,
-	      "angry": 50,
-	      "scared": 5
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td11n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 12,
-	      "sad": 41,
-	      "angry": 81,
-	      "scared": 30
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td22n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 2,
-	      "sad": 31,
-	      "angry": 41,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td11n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 12,
-	      "sad": 41,
-	      "angry": 81,
-	      "scared": 30
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }, {
-	    "id": "-KM6gfVu_feZ_P7Td22n",
-	    "abstract": "The fatal shooting of a black man by a police officer fit a pattern of disparate, unfair and even violent treatment of black people, Gov. Mark Dayton of Minnesota said. The moments after Philando Castile was shot during a traffic stop in a St. Paul suburb were streamed live by a passenger in the car.",
-	    "reactions": {
-	      "happy": 2,
-	      "sad": 31,
-	      "angry": 41,
-	      "scared": 90
-	    },
-	    "published_date": "2016-07-08T00:00:00-5:00",
-	    "title": "‘Would This Have Happened if the Driver Were White?’",
-	    "url": "http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html"
-	  }]
-	};
-
-/***/ },
+/* 455 */,
 /* 456 */
 /***/ function(module, exports, __webpack_require__) {
 

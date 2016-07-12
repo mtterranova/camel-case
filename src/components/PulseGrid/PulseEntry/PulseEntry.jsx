@@ -27,10 +27,10 @@ class PulseEntry extends React.Component {
   render() {
 
     let show = this.state.onOrbClick ?  'show'  : 'hide' ;
-
+    
     return (
       <div className="col-md-4 orb-entry" >
-          <PulseEntryOrb reactions={this.props.articleData.reactions} handleOrbClick={this.handleOrbClick}/>
+          <PulseEntryOrb reactions={this.props.articleData.reactions} handleOrbClick={this.handleOrbClick} articlePopularity={this.props.articlePopularity}/>
           <PulseEntryHover articleData={this.props.articleData} />
       </div>
     );

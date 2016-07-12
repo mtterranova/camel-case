@@ -15,7 +15,6 @@ Pulse Entry
     position: absolute;
     transform: scale(5, 5);
     -webkit-transform: scale(5, 5);
-    
 }
 
 .firstCircle,
@@ -34,8 +33,7 @@ Pulse Entry
     height: 10px;
     margin: -5.5px 0 0 -5.5px;
     background-color: #ccc;
-    animation: 2000ms pulse 500ms ease-in-out infinite;
-    -webkit-animation: 2000ms pulse 500ms ease-in-out infinite
+    
 }
 
 
@@ -45,8 +43,7 @@ Pulse Entry
     height: 16px;
     margin: -9px 0 0 -9px;
     border: 1px solid #ccc;
-    animation: 2000ms pulseIn ease-in-out infinite;
-    -webkit-animation: 2000ms pulseIn ease-in-out infinite;
+    
 }
 
 @keyframes pulse {
@@ -100,20 +97,81 @@ Pulse Entry
     height: 24px;
     border: 1px solid #ccc;
     margin: -13px 0 0 -13px;
-    animation: 2000ms pulseIn 500ms ease-in-out infinite;
-    -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite
+}
+
+/********************
+LowCircle Subject
+********************/
+
+.lowFirstCircle {
+    animation: 3500ms pulse 1500ms ease-in-out infinite;
+    -webkit-animation: 3500ms pulse 1500ms ease-in-out infinite;
+}
+
+.lowSecondCircle {
+    animation: 2000ms pulse 3000ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 3000ms ease-in-out infinite;
+}
+
+.lowThirdCircle {
+    animation: 3000ms pulse 2000ms ease-in-out infinite;
+    -webkit-animation: 3000ms pulse 2000ms ease-in-out infinite;
+}
+
+/********************
+MidCircle Subject
+********************/
+
+.midFirstCircle {
+    animation: 2000ms pulse 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 500ms ease-in-out infinite;
+}
+
+.midSecondCircle {
+    animation: 2000ms pulseIn ease-in-out infinite;
+    -webkit-animation: 2000ms pulseIn ease-in-out infinite;
+}
+
+.midThirdCircle {
+     animation: 2000ms pulseIn 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite;
+}
+
+
+/*****************
+High Circle Subject
+******************/
+
+.highFirstCircle {
+     animation: 1000ms pulse 250ms ease-in-out infinite;
+    -webkit-animation: 1000ms pulse 250ms ease-in-out infinite;
+}
+
+.highSecondCircle {
+    animation: 625ms pulse 625ms ease-in-out infinite;
+    -webkit-animation: 625ms pulse 625ms ease-in-out infinite;
+}
+
+.highThirdCircle {
+    animation: 800ms pulse 450ms ease-in-out infinite;
+    -webkit-animation: 800ms pulse 450ms ease-in-out infinite;
 }
 
 
 
 
+/********************************************
+Pulse Entry Hover
+********************************************/
+
 
 .pulseEntryHover {
-    width:20px;
-    height:20px;
+    width:50px;
+    height:50px;
     top:52.5%;
     left:51.5%;
-    background-color: transparent;
+    background-color: black;
+    z-index: 99;
     transform: translateX(-50%) translateY(-50%);
     position:absolute;
     border-radius: 50%;
@@ -182,5 +240,7 @@ Pulse Entry
 }
 
 
-
+.retranslate {
+    transform: translateX(-50%) translateY(-50%);
+}
 
