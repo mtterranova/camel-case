@@ -28345,7 +28345,7 @@
 	var FETCH_ARTICLES = exports.FETCH_ARTICLES = 'FETCH_ARTICLES';
 	var INCREMENT_REACTION = exports.INCREMENT_REACTION = 'INCREMENT_REACTION';
 	
-	var DATE = '07-08-16';
+	var DATE = '07-12-16';
 	var iterator = 0;
 	
 	var config = {
@@ -29712,6 +29712,10 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
+	var _CategoryMenu = __webpack_require__(623);
+	
+	var _CategoryMenu2 = _interopRequireDefault(_CategoryMenu);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29737,7 +29741,8 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_Nav2.default, null),
-	        _react2.default.createElement(_PulseGrid2.default, null)
+	        _react2.default.createElement(_PulseGrid2.default, null),
+	        _react2.default.createElement(_CategoryMenu2.default, null)
 	      );
 	    }
 	  }]);
@@ -29746,8 +29751,6 @@
 	}(_react2.default.Component);
 	
 	module.exports = Home;
-	
-	// removed <Nav />
 
 /***/ },
 /* 267 */
@@ -29809,10 +29812,9 @@
 				var articles = this.props.articles;
 	
 				return this.props.articles && this.props.articles.map(function (article, index) {
-					if (index < 5) {
-						var popularityStatus = _PulseHelpers2.default.popularityStatus(article, articles);
-						return _react2.default.createElement(_PulseEntry2.default, { key: index, articleData: article, articlePopularity: popularityStatus });
-					}
+	
+					var popularityStatus = _PulseHelpers2.default.popularityStatus(article, articles);
+					return _react2.default.createElement(_PulseEntry2.default, { key: index, articleData: article, articlePopularity: popularityStatus });
 				});
 			}
 		}, {
@@ -79229,6 +79231,66 @@
 	    return zh_tw;
 	
 	}));
+
+/***/ },
+/* 623 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CategoryMenu = function (_React$Component) {
+		_inherits(CategoryMenu, _React$Component);
+	
+		function CategoryMenu(props) {
+			_classCallCheck(this, CategoryMenu);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CategoryMenu).call(this, props));
+	
+			_this.state = {
+				fadeInClass: ''
+			};
+			return _this;
+		}
+	
+		_createClass(CategoryMenu, [{
+			key: 'fadeInMenu',
+			value: function fadeInMenu() {
+				var that = this;
+				that.setState({ fadeInClass: 'addFadeIn' });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+	
+				return _react2.default.createElement('div', {
+					id: 'CategoryMenu',
+					className: this.state.fadeInClass
+				});
+			}
+		}]);
+	
+		return CategoryMenu;
+	}(_react2.default.Component);
+	
+	exports.default = CategoryMenu;
 
 /***/ }
 /******/ ]);

@@ -17,10 +17,10 @@ class PulseGrid extends React.Component {
 		var articles = this.props.articles;
 
 		return this.props.articles && this.props.articles.map(function(article,index){
-			if(index < 5){
+	
 				var popularityStatus = PulseHelpers.popularityStatus(article, articles);
 				return <PulseEntry key={index} articleData={article} articlePopularity={popularityStatus}/>
-			}
+			
 		})
 	}
 

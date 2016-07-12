@@ -1,6 +1,7 @@
 import React from 'react';
 import PulseGrid from './PulseGrid/PulseGrid';
 import Nav from './NavBar/Nav';
+import CategoryMenu from './CategoryMenu/CategoryMenu';
 
 class Home extends React.Component {
 
@@ -8,8 +9,9 @@ class Home extends React.Component {
 
     return (
       <div>
-      	<Nav/>
-        <PulseGrid/>
+      	<Nav />
+        <PulseGrid />
+        <CategoryMenu />
       </div>
     );
 
@@ -17,5 +19,3 @@ class Home extends React.Component {
 }
 
 module.exports = Home
-
-// removed <Nav />

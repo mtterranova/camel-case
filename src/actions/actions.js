@@ -4,7 +4,7 @@ import reactfire from 'reactfire';
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
 export const INCREMENT_REACTION = 'INCREMENT_REACTION';
 
-const DATE = '07-08-16';
+const DATE = '07-12-16';
 var iterator = 0;
 
 var config = {
