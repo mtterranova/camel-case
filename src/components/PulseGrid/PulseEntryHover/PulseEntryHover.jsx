@@ -15,9 +15,11 @@ class PulseEntryHover extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
+ 
+
   handleMouseOver(){
     this.setState({
-      backgroundColor: this.state.reactionColor,
+      backgroundColor: PulseHelpers.colorPicker(this.props.articleData.reactions),
       textColor: 'white'
     })
   }
@@ -29,8 +31,9 @@ class PulseEntryHover extends React.Component {
     })
   }
 
-  render() {
+  
 
+  render() {
     return (
       <div  className="pulseEntryHover" onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} style={{'backgroundColor': this.state.backgroundColor}}>
         <h1 className="articleTitle" style={{color:this.state.textColor}}>{this.props.articleData.title}</h1>

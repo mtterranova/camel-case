@@ -11,7 +11,6 @@ export default class PulseEntryOrb extends React.Component {
   
   render() {
     var color = PulseHelpers.colorPicker(this.props.reactions);
-    this.props.articlePopularity
 
     var firstCircleClass;
     var secondCircleClass;
