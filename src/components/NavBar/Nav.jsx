@@ -14,10 +14,14 @@ import * as actions from '../../actions/actions';
 class Nav extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			open: false
+			open: false,
+			currentSection: 'All'
 		}
+
 		injectTapEventPlugin();
+
 	}
 
 	componentDidMount() {
@@ -25,23 +29,29 @@ class Nav extends React.Component {
 	}
 
 	handleFilter(sectionFilter) {
+		this.setState({currentSection: sectionFilter})
 		this.props.fetchArticles(sectionFilter);
 	}
 
 	renderMenuItems() {
 		return this.props.sections && this.props.sections.map(function(section,index) {
-			 return <MenuItem key={index} onTouchTap={this.handleClose.bind(this)} onClick={() => this.handleFilter(section)}> {section} </MenuItem>
+			 return <MenuItem
+			 						checked={section === this.state.currentSection ? true : false}
+			 						key={index} onTouchTap={this.handleClose.bind(this)}
+									onClick={() => this.handleFilter(section)}> {section}
+							</MenuItem>
 		}, this)
 	}
 
 	handleDate(date) {
-		return moment(date).format('MMMM Do, YYYY')
+		return moment(date).format('dddd MMMM Do, YYYY')
 	}
 
-	handleDateChange(a, b) {
-		console.log('handleDateChange')
-		console.log(a)
-		console.log(b)
+	handleDateChange(a, newDate) {
+		this.setState({currentSection: 'All'})
+		let newDateFormatted = moment(newDate).format('MM-DD-YY');
+		this.props.fetchSections(newDateFormatted);
+		this.props.fetchArticles('All', newDateFormatted);
 	}
 
 	handleToggle() {
@@ -64,7 +74,7 @@ class Nav extends React.Component {
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
 					    iconElementRight = {
 					    	<DatePicker
-									onChange = { this.handleDateChange }
+									onChange = { this.handleDateChange.bind(this) }
 									maxDate = { new Date() }
 					    		formatDate = { this.handleDate.bind(this) }
 					    		defaultDate = { new Date() }

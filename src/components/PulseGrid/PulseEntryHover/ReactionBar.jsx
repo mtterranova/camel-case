@@ -21,11 +21,10 @@ class ReactionBar extends React.Component{
 
 	render(){
 		var reactions = this.props.articleData.reactions
-		var sortedReactions = Object.keys(reactions).sort(function(a,b){return reactions[b] - reactions[a]})
 		const style = {
-				marginTop: '5px',
-				marginRight: '5px',
-  			backgroundColor: 'transparent'
+			marginTop: '5px',
+			marginRight: '5px',
+			backgroundColor: 'transparent'
 		};
 		return (
 			<div className="reactionBar">

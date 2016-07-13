@@ -1,21 +1,22 @@
 import firebase from 'firebase';
 import reactfire from 'reactfire';
+import moment from 'moment';
 
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
 export const FETCH_SECTIONS = 'FETCH_SECTIONS';
-
-const DATE = '07-12-16';
-var iterator = 0;
 
 var config = {
   apiKey: "35c86f61815f2421bb081cc7e82fbb98bb56a812",
   databaseURL: "https://camel-case-e34bc.firebaseio.com/"
 };
 
+var dateNow = moment().format('MM-DD-YY');
+var currentlySelectedDate;
 firebase.initializeApp(config);
-var Articles = firebase.database().ref(DATE);
 
-export function fetchArticles(sectionFilter='All') {
+export function fetchArticles(sectionFilter='All', date=dateNow) {
+  currentlySelectedDate = date;
+  var Articles = firebase.database().ref(date);
   return dispatch => {
     Articles.on('value', snapshot => {
       var data = [];
@@ -40,7 +41,8 @@ export function fetchArticles(sectionFilter='All') {
   };
 }
 
-export function fetchSections() {
+export function fetchSections(date=dateNow) {
+  var Articles = firebase.database().ref(date);
   return dispatch => {
     Articles.once('value').then(snapshot => {
       var data = ['All'];
@@ -64,6 +66,6 @@ export function incrementReactions(id, reactionType, currentCount) {
   var reactionToAdd = {};
   reactionToAdd[reactionType] = currentCount + 1;
   return dispatch => {
-    firebase.database().ref(DATE + '/' + id + '/reactions' ).update(reactionToAdd)
+    firebase.database().ref(currentlySelectedDate + '/' + id + '/reactions' ).update(reactionToAdd)
   }
 }
