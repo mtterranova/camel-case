@@ -8,7 +8,7 @@ export default class PulseEntryOrb extends React.Component {
     super(props);
     this.state = {}
   }
-  
+
   render() {
     var color = PulseHelpers.colorPicker(this.props.reactions);
 
@@ -21,7 +21,7 @@ export default class PulseEntryOrb extends React.Component {
       secondCircleClass = second;
       thirdCircleClass = third;
     }
-    
+
    switch (this.props.articlePopularity){
       case 'low':
         changeCircleClass('lowFirstCircle','lowSecondCircle','lowThirdCircle')

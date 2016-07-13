@@ -10,8 +10,8 @@ firebase.initializeApp({
 
 
 /* TODO: use a universal timezone! */
-var dateNow = moment().format('MM-DD-YY')
-
+// var dateNow = moment().format('MM-DD-YY')
+var dateNow = '07-11-16'
 var db = firebase.database();
 
 module.exports = function(data) {
