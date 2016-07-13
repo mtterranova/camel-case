@@ -29,17 +29,17 @@ class Nav extends React.Component {
 	}
 
 	handleFilter(sectionFilter) {
-		this.setState({currentSection: sectionFilter})
+		this.setState({ currentSection: sectionFilter })
 		this.props.fetchArticles(sectionFilter);
 	}
 
 	renderMenuItems() {
 		return this.props.sections && this.props.sections.map(function(section,index) {
 			 return <MenuItem
-			 						checked={section === this.state.currentSection ? true : false}
-			 						key={index} onTouchTap={this.handleClose.bind(this)}
-									onClick={() => this.handleFilter(section)}> {section}
-							</MenuItem>
+			 			checked={section === this.state.currentSection ? true : false}
+			 			key={index} onTouchTap={this.handleClose.bind(this)}
+						onClick={() => this.handleFilter(section)}> {section}
+					</MenuItem>
 		}, this)
 	}
 
@@ -71,11 +71,16 @@ class Nav extends React.Component {
 				<MuiThemeProvider>
 					<AppBar
 					    title = "News Pulse"
+
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
+					    style = {
+					    	{
+					    		'backgroundColor': '#0097A7' }
+					    	}
 					    iconElementRight = {
 					    	<DatePicker
-									onChange = { this.handleDateChange.bind(this) }
-									maxDate = { new Date() }
+								onChange = { this.handleDateChange }
+								maxDate = { new Date() }
 					    		formatDate = { this.handleDate.bind(this) }
 					    		defaultDate = { new Date() }
 									inputStyle = {
@@ -87,7 +92,9 @@ class Nav extends React.Component {
 						    	autoOk = { true }
 						    />
 						}
-					/>
+					>
+						<h id="centerIcon">{ this.state.currentSection }</h>
+					</AppBar>
 				</MuiThemeProvider>
 				<MuiThemeProvider>
 						<Drawer
@@ -95,7 +102,7 @@ class Nav extends React.Component {
 							docked = { false }>
 								<div>
 									{ MenuItems }
-	       				</div>
+	       						</div>
        				</Drawer>
 
    				</MuiThemeProvider>
