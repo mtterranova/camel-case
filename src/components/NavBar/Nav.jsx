@@ -7,6 +7,7 @@ import AppBar from 'material-ui/AppBar';
 import moment from 'moment';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {Link} from 'react-router'
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions';
@@ -17,7 +18,9 @@ class Nav extends React.Component {
 		this.state = {
 			open: false
 		}
-		injectTapEventPlugin();
+		
+
+		
 	}
 
 	componentDidMount() {
@@ -54,13 +57,17 @@ class Nav extends React.Component {
 
 	render() {
 
-		let MenuItems = this.renderMenuItems();
 
+		let MenuItems = this.renderMenuItems();
+		let style = {
+			color:'#FFFFFF'
+		}
+		let AboutLink = <Link style={style} to = {"/about"}>News Pulse</Link>
 		return(
 			<div>
 				<MuiThemeProvider>
 					<AppBar
-					    title = "News Pulse"
+					    title = {AboutLink}
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
 					    iconElementRight = {
 					    	<DatePicker
