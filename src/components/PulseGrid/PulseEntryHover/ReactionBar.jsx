@@ -18,30 +18,33 @@ class ReactionBar extends React.Component{
     	}
   	}
 
-
 	render(){
-		var reactions = this.props.articleData.reactions
 		const style = {
 			marginTop: '5px',
 			marginRight: '5px',
 			backgroundColor: 'transparent'
 		};
+
 		return (
 			<div className="reactionBar">
-						<RaisedButton style={style}
-						  onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'happy', this.props.articleData.reactions.happy) }>
+						<RaisedButton
+							style={style}
+						  onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'happy', this.props.articleData.reactions.happy) } >
 							<i className="em em-smile"></i> ({this.props.articleData.reactions.happy})
 						</RaisedButton>
-						<RaisedButton style={style}
-							onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'sad', this.props.articleData.reactions.sad) }>
+						<RaisedButton
+							style={style}
+							onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'sad', this.props.articleData.reactions.sad) } >
 							<i className="em em-disappointed_relieved"></i> ({this.props.articleData.reactions.sad})
 						</RaisedButton>
-						<RaisedButton style={style}
-							onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'angry', this.props.articleData.reactions.angry) }>
+						<RaisedButton
+							style={style}
+							onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'angry', this.props.articleData.reactions.angry) } >
 							<i className="em em-angry"></i> ({this.props.articleData.reactions.angry})
 						</RaisedButton>
-						<RaisedButton style={style}
-							onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'scared', this.props.articleData.reactions.scared) }>
+						<RaisedButton
+							style={style}
+							onClick={ () => this.props.incrementReactions(this.props.articleData.id, 'scared', this.props.articleData.reactions.scared) } >
 							<i className="em em-fearful"></i> ({this.props.articleData.reactions.scared})
      				</RaisedButton>
 			</div>

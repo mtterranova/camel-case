@@ -14,23 +14,21 @@ var dateNow = moment().format('MM-DD-YY');
 var currentlySelectedDate;
 firebase.initializeApp(config);
 
-export function fetchArticles(sectionFilter='All', date=dateNow) {
+export function fetchArticles(sectionFilter='U.S.', date=dateNow) {
   currentlySelectedDate = date;
   var Articles = firebase.database().ref(date);
   return dispatch => {
     Articles.on('value', snapshot => {
+      console.log('recieve data from firebase');
       var data = [];
       for (var key in snapshot.val()){
         var obj = snapshot.val()[key];
         obj.id = key;
-        if (sectionFilter !== 'All'){
-          if (obj.section===sectionFilter){
-            data.push(obj)
-          }
-        } else {
+        if (obj.section===sectionFilter){
           data.push(obj)
         }
       }
+      console.log('data manipulated from firebase')
       dispatch({
         type: FETCH_ARTICLES,
         payload: data
@@ -45,11 +43,13 @@ export function fetchSections(date=dateNow) {
   var Articles = firebase.database().ref(date);
   return dispatch => {
     Articles.once('value').then(snapshot => {
-      var data = ['All'];
+      var data = {};
       for (var key in snapshot.val()){
         var section = snapshot.val()[key]['section'];
-        if (data.indexOf(section) === -1){
-          data.push(section)
+        if (data.hasOwnProperty(section)){
+          data[section]++;
+        } else {
+          data[section] = 1;
         }
       }
       dispatch({
@@ -66,6 +66,7 @@ export function incrementReactions(id, reactionType, currentCount) {
   var reactionToAdd = {};
   reactionToAdd[reactionType] = currentCount + 1;
   return dispatch => {
+    console.log('sending data to firebase');
     firebase.database().ref(currentlySelectedDate + '/' + id + '/reactions' ).update(reactionToAdd)
   }
 }

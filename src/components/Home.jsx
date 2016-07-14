@@ -11,7 +11,6 @@ export default class Home extends React.Component {
       <div>
       	<Nav />
         <PulseGrid />
-        <CategoryMenu />
       </div>
     );
 
