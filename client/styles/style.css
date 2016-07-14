@@ -3,6 +3,20 @@ body {
 }
 
 /*****************************
+Navigation
+*****************************/
+#centerIcon {
+  color: white;
+  position: absolute;
+  font-size: 1.5em;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+}
+
+
+/*****************************
 Pulse Entry
 *****************************/
 
@@ -306,8 +320,6 @@ Category Menu
     }
 }
 
-
-
 }
 
 @keyframes fadeIn {
@@ -320,4 +332,40 @@ Category Menu
     100% {
         opacity: 0.7;
     }
+}
+
+/********************
+About Page 
+*******************/
+#headerContainer{
+  background-color:#f8f8f8;
+  margin:auto;
+  width:80% ;
+  height:300px ;
+  position:relative;
+}
+#headerTitle{
+  margin:auto;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-right:-50%;
+  transform: translate(-50%, -50%)
+}
+#headerParagraph{
+  margin:auto;
+  position:absolute;
+  top:60%;
+  left:50%;
+  margin-right:-50%;
+  transform: translate(-50%,-50%);
+  font-style: italic;
+}
+#paragraph{
+  
+  word-wrap: break-word;
+}
+#team{
+  
+  word-wrap: break-word;
 }

@@ -1,7 +1,7 @@
 module.exports = function(app){
 
-    app.get('/login', function(req, res){
-        res.send(404)
-    });
+  app.get('*', function (req, res){
+    res.sendFile(path.resolve("client","index.html"))
+  })
 
 }

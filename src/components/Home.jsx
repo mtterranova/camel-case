@@ -1,7 +1,10 @@
 import React from 'react';
 import PulseGrid from './PulseGrid/PulseGrid';
-import Nav from './NavBar/Nav';
 import CategoryMenu from './CategoryMenu/CategoryMenu';
+import { Link } from 'react-router';
+import Nav from './NavBar/Nav';
+import About from './About/About'
+
 
 export default class Home extends React.Component {
 

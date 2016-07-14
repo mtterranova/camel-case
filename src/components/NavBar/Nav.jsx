@@ -8,6 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import moment from 'moment';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {Link} from 'react-router'
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions';
@@ -20,9 +21,6 @@ class Nav extends React.Component {
 			open: false,
 			currentSection: 'U.S.'
 		}
-
-		injectTapEventPlugin();
-
 	}
 
 	componentDidMount() {
@@ -30,7 +28,7 @@ class Nav extends React.Component {
 	}
 
 	handleFilter(sectionFilter) {
-		this.setState({currentSection: sectionFilter})
+		this.setState({ currentSection: sectionFilter })
 		this.props.fetchArticles(sectionFilter);
 	}
 
@@ -67,19 +65,27 @@ class Nav extends React.Component {
 
 	render() {
 
-		let MenuItems = this.renderMenuItems();
 
+		let MenuItems = this.renderMenuItems();
+		let style = {
+			color:'#FFFFFF'
+		}
+		let AboutLink = <Link style={style} to={"/about"}>News Pulse</Link>
 		return(
 
 			<div>
 				<MuiThemeProvider>
 					<AppBar
-					    title = "News Pulse"
+					    title = {AboutLink}
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
+					    style = {
+					    	{
+					    		'backgroundColor': '#0097A7' }
+					    	}
 					    iconElementRight = {
 					    	<DatePicker
-									onChange = { this.handleDateChange.bind(this) }
-									maxDate = { new Date() }
+								onChange = { this.handleDateChange.bind(this) }
+								maxDate = { new Date() }
 					    		formatDate = { this.handleDate.bind(this) }
 					    		defaultDate = { new Date() }
 									inputStyle = {
@@ -91,7 +97,9 @@ class Nav extends React.Component {
 						    	autoOk = { true }
 						    />
 						}
-					/>
+					>
+						<h id="centerIcon">{ this.state.currentSection }</h>
+					</AppBar>
 				</MuiThemeProvider>
 				<MuiThemeProvider>
 						<Drawer
@@ -99,7 +107,7 @@ class Nav extends React.Component {
 							docked = { false }>
 								<div>
 									{ MenuItems }
-	       				</div>
+	       						</div>
        				</Drawer>
 
    				</MuiThemeProvider>
