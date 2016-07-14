@@ -67,17 +67,12 @@ class Nav extends React.Component {
 		let style = {
 			color:'#FFFFFF'
 		}
-		let AboutLink = <Link style={style} to = {"/about"}>News Pulse</Link>
+		let AboutLink = <Link style={style} to={"/about"}>News Pulse</Link>
 		return(
 			<div>
 				<MuiThemeProvider>
 					<AppBar
-<<<<<<< HEAD
 					    title = {AboutLink}
-=======
-					    title = "News Pulse"
-
->>>>>>> 96a4a24d73c1a0d42e53d8534694145ec0655160
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
 					    style = {
 					    	{
@@ -85,7 +80,7 @@ class Nav extends React.Component {
 					    	}
 					    iconElementRight = {
 					    	<DatePicker
-								onChange = { this.handleDateChange }
+								onChange = { this.handleDateChange.bind(this) }
 								maxDate = { new Date() }
 					    		formatDate = { this.handleDate.bind(this) }
 					    		defaultDate = { new Date() }

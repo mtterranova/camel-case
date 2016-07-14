@@ -8,7 +8,6 @@ var app = express();
 
 /* Serve all static files from public folder */
 app.use(express.static('./client'));
-console.log(__dirname,"directory name");
 app.get('*', function (request, response){
   response.sendFile(path.resolve("client","index.html"))
 })
