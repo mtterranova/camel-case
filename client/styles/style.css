@@ -1,3 +1,21 @@
+body {
+  margin-bottom: 30px;
+}
+
+/*****************************
+Navigation
+*****************************/
+#centerIcon {
+  color: white;
+  position: absolute;
+  font-size: 1.5em;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+}
+
+
 /*****************************
 Pulse Entry
 *****************************/
@@ -31,7 +49,7 @@ Pulse Entry
 .firstCircle {
   width: 10px;
   height: 10px;
-  margin: -5.5px 0 0 -5.5px;
+  margin: -6px 0 0 -6px;
   background-color: #ccc;
 }
 
@@ -41,6 +59,13 @@ Pulse Entry
   height: 16px;
   margin: -9px 0 0 -9px;
   border: 1px solid #ccc;
+}
+
+.thirdCircle {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ccc;
+  margin: -13px 0 0 -13px;
 }
 
 @keyframes pulse {
@@ -89,12 +114,6 @@ Pulse Entry
     }
 }
 
-.thirdCircle {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #ccc;
-  margin: -13px 0 0 -13px;
-}
 
 /********************
 LowCircle Subject
@@ -166,14 +185,17 @@ Pulse Entry Hover
   width:50px;
   height:50px;
   top:52.5%;
-  left:51.5%;
+  left:50%;
   background-color: black;
   z-index: 99;
+  padding: 10px;
   transform: translateX(-50%) translateY(-50%);
   position:absolute;
   border-radius: 50%;
   animation: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out; 
+  -webkit-transition: all 0.5s ease-in-out;
+  padding: 10px;
+  overflow-y: auto;
 }
 
 .pulseEntryHover:hover {
@@ -240,7 +262,7 @@ Category Menu
     transform: translateX(-50%) translateY(-50%);
     opacity: 0;
     border-radius: 3%;
-    
+
 }
 
 .addFadeIn {
@@ -269,7 +291,7 @@ Category Menu
     transform: translateX(-50%) translateY(-50%);
     opacity: 0;
     border-radius: 3%;
-    
+
 }
 
 .addFadeIn {
@@ -294,8 +316,6 @@ Category Menu
     }
 }
 
-
-
 }
 
 @keyframes fadeIn {
@@ -309,11 +329,6 @@ Category Menu
         opacity: 0.7;
     }
 }
-
-
-
-
-
 
 /********************
 About Page 

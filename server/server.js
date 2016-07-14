@@ -22,7 +22,7 @@ app.listen(port, function(){
 
 var sections = ['home','world','national','politics','nyregion','business','opinion','technology','science','health','sports','arts','fashion','dining','travel','magazine','realestate']
 
-var date = new Date(2016, 6, 12, 14, 01, 10);
+var date = new Date(2016, 6, 12, 18, 45, 20);
 
 schedule.scheduleJob(date, function(){
   sections.forEach(function(section){
