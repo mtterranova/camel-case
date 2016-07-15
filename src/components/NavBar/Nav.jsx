@@ -1,6 +1,7 @@
 import React from 'react';
 import reactDom from 'react-dom';
 import DatePicker from 'material-ui/DatePicker';
+import _ from 'underscore';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from "react-tap-event-plugin";
 import AppBar from 'material-ui/AppBar';
@@ -18,7 +19,7 @@ class Nav extends React.Component {
 
 		this.state = {
 			open: false,
-			currentSection: 'All'
+			currentSection: 'U.S.'
 		}
 	}
 
@@ -32,12 +33,14 @@ class Nav extends React.Component {
 	}
 
 	renderMenuItems() {
-		return this.props.sections && this.props.sections.map(function(section,index) {
+		return this.props.sections && _.map(this.props.sections, function(num, section) {
 			 return <MenuItem
-			 			checked={section === this.state.currentSection ? true : false}
-			 			key={index} onTouchTap={this.handleClose.bind(this)}
-						onClick={() => this.handleFilter(section)}> {section}
-					</MenuItem>
+			 						checked={section === this.state.currentSection ? true : false}
+			 						key={section}
+									onTouchTap={this.handleClose.bind(this)}
+									onClick={() => this.handleFilter(section)}>
+									{section} ({num})
+							</MenuItem>
 		}, this)
 	}
 
@@ -46,10 +49,10 @@ class Nav extends React.Component {
 	}
 
 	handleDateChange(a, newDate) {
-		this.setState({currentSection: 'All'})
+		this.setState({currentSection: 'U.S.'})
 		let newDateFormatted = moment(newDate).format('MM-DD-YY');
 		this.props.fetchSections(newDateFormatted);
-		this.props.fetchArticles('All', newDateFormatted);
+		this.props.fetchArticles(this.state.currentSection, newDateFormatted);
 	}
 
 	handleToggle() {
@@ -69,6 +72,7 @@ class Nav extends React.Component {
 		}
 		let AboutLink = <Link style={style} to={"/about"}>News Pulse</Link>
 		return(
+
 			<div>
 				<MuiThemeProvider>
 					<AppBar

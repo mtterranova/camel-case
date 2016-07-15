@@ -49,7 +49,7 @@ Pulse Entry
 .firstCircle {
   width: 10px;
   height: 10px;
-  margin: -6px 0 0 -6px;
+  margin: -5px 0 0 -5px;
   background-color: #ccc;
 }
 
@@ -57,7 +57,7 @@ Pulse Entry
 .secondCircle {
   width: 16px;
   height: 16px;
-  margin: -9px 0 0 -9px;
+  margin: -8px 0 0 -8px;
   border: 1px solid #ccc;
 }
 
@@ -65,7 +65,7 @@ Pulse Entry
   width: 24px;
   height: 24px;
   border: 1px solid #ccc;
-  margin: -13px 0 0 -13px;
+  margin: -12px 0 0 -12px;
 }
 
 @keyframes pulse {
@@ -195,7 +195,6 @@ Pulse Entry Hover
   animation: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   padding: 10px;
-  overflow-y: auto;
 }
 
 .pulseEntryHover:hover {
@@ -228,6 +227,10 @@ Pulse Entry Hover
   font-size: 0px;
 }
 
+.articleTitle a {
+  color: white;
+}
+
 .articleAbstract{
   font-size: 0px;
 }
@@ -235,6 +238,7 @@ Pulse Entry Hover
 .reactionBar{
   display: none;
   position: inherit;
+  margin: 10px 0;
 }
 
 .articleTitle, .articleAbstract, .reactionBar{
