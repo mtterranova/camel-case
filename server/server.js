@@ -22,8 +22,8 @@ var sections = ['home','world','national','politics','nyregion','business','opin
 
 var date = new Date(2016, 6, 13, 11, 46, 40);
 
-// schedule.scheduleJob(date, function(){
+schedule.scheduleJob(date, function(){
   sections.forEach(function(section){
     nyt(section);
   })
-// });
+});
