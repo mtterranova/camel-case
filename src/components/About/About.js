@@ -14,36 +14,63 @@ class About extends React.Component {
 		let Homelink = <Link style = {style}
 												 to={"/"}>
 												 <i className="fa fa-long-arrow-left"></i>
-												 &nbsp;Home
+												 Home
 									 </Link>
 
 		return (
 			<div>
 			<MuiThemeProvider>
-			<AppBar
-		  	title={Homelink}
-				style = {
-					{ 'backgroundColor': '#0097A7' }
-				}
-		  	iconClassNameRight="muidocs-icon-navigation-expand-more"
-		  	iconElementLeft ={<h1></h1>}
-				/>
-			</MuiThemeProvider>
-				<div id = "headerContainer">
-					<h1 id="headerTitle">About</h1>
-					<p id="headerParagraph">OUR STORY. OUR TEAM. OUR IDEA.</p>
-				</div>
-				<div id = "paragraph">
-					<h1>Our Story</h1>
-					<p>THE JUNGLE THE MIGHTY JUNGLE THE LION SLEEPS TONIGHT AWEEOOOO IN THE JUNGLE THE MIGHTY JUNGLE THE LION SLEEPS TONIGHT BLAH BLAH BLAH THIS BE TOO COOL SMOKING AND EATING THE DEVILS LETTUCE</p>
-				</div>
-				<div id = "team">
-					<h2>Our team</h2>
-					<p>Picture goes here</p>
-				</div>
+			 <AppBar
+    	title={Homelink}
+			style = {
+				{ 'backgroundColor': '#0097A7' }
+			}
+    	iconClassNameRight="muidocs-icon-navigation-expand-more"
+    	iconElementLeft ={<h1></h1>}
+  				/>
+  			</MuiThemeProvider>
 
-			</div>
-		)
+
+  			<div id = "headerContainer" className = "text-center">
+  				<img src = {"http://cdn.decoist.com/wp-content/uploads/2015/05/View-of-the-New-York-City-Skyline-from-the-apartment.jpg"}/>
+
+  				<p id = "headerParagraph">OUR STORY. OUR TEAM. THE IDEA.</p>
+  			</div>
+
+
+
+
+  			<div id = "paragraph">
+  			<div className ="container-fluid">
+				<h1><center>Our Story</center></h1>
+				<p className = "text-center">
+				Like many things it started with a simple idea. An idea to reinvent the way we read the news. Today’s generation isn’t about being knowledgeable in a single topic, but rather well informed in a broad range of topics.  We took that very concept and built an application that allows readers to stay informed about the topics important to the world. As a team, we felt that the readers opinion  amongst most news sources was completely undermined. Our application gives users a new and exciting way to interpret the news by viewing the reactions of a story first, rather than the article itself. We hope to you enjoy using NewsPulse as much as we enjoyed creating it for you.
+</p>
+
+
+				<div id="team">
+   <h1><center>Our team</center></h1>
+   <div className="row" className="text-center">
+      <div className="col-sm-3"><img className="img-circle" src={ 'https://avatars0.githubusercontent.com/u/13908543?v=3&s=400'} alt='Max' height='200' width='200' />
+         <h4>Max Einstein</h4>
+      </div>
+      <div className="col-sm-3"><img className="img-circle" src={ 'https://avatars0.githubusercontent.com/u/17011761?v=3&s=400'} alt='Matthew' height='200' width='200' />
+         <h4>Matthew Terranova</h4>
+      </div>
+      <div className="col-sm-3"><img className="img-circle" src={ 'https://avatars0.githubusercontent.com/u/8779656?v=3&s=400'} alt='Dailen' height='200' width='200' />
+         <h4>Dailen Spencer</h4>
+      </div>
+      <div className="col-sm-3"><img className="img-circle" src={ 'https://avatars2.githubusercontent.com/u/14831209?v=3&s=460'} alt='Jason' height='200' width='200' />
+         <h4>Jason Lee</h4>
+      </div>
+   </div>
+</div>
+</div>
+</div>
+
+</div>
+
+			)
 	}
 }
 

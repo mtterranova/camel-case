@@ -335,14 +335,12 @@ Category Menu
 }
 
 /********************
-About Page 
+About Page
 *******************/
 #headerContainer{
-  background-color:#f8f8f8;
-  margin:auto;
-  width:80% ;
-  height:300px ;
-  position:relative;
+  margin: 10px auto;
+  width:100% ;
+  color: white;
 }
 #headerTitle{
   margin:auto;
@@ -362,10 +360,9 @@ About Page
   font-style: italic;
 }
 #paragraph{
-  
   word-wrap: break-word;
 }
-#team{
-  
-  word-wrap: break-word;
+
+.fa-long-arrow-left {
+  margin-right: 10px;
 }
