@@ -338,11 +338,9 @@ Category Menu
 About Page 
 *******************/
 #headerContainer{
-  background-color:#f8f8f8;
   margin:auto;
-  width:80% ;
-  height:300px ;
-  position:relative;
+  width:100% ;
+  color: white;
 }
 #headerTitle{
   margin:auto;
@@ -362,10 +360,6 @@ About Page
   font-style: italic;
 }
 #paragraph{
-  
   word-wrap: break-word;
 }
-#team{
-  
-  word-wrap: break-word;
-}
+
