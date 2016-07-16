@@ -335,10 +335,10 @@ Category Menu
 }
 
 /********************
-About Page 
+About Page
 *******************/
 #headerContainer{
-  margin:auto;
+  margin: 10px auto;
   width:100% ;
   color: white;
 }
@@ -363,3 +363,6 @@ About Page
   word-wrap: break-word;
 }
 
+.fa-long-arrow-left {
+  margin-right: 10px;
+}
