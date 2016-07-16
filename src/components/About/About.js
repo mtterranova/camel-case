@@ -30,15 +30,11 @@ class About extends React.Component {
   				/>
   			</MuiThemeProvider>
 
-
   			<div id = "headerContainer" className = "text-center">
   				<img src = {"http://cdn.decoist.com/wp-content/uploads/2015/05/View-of-the-New-York-City-Skyline-from-the-apartment.jpg"}/>
 
   				<p id = "headerParagraph">OUR STORY. OUR TEAM. THE IDEA.</p>
   			</div>
-
-
-
 
   			<div id = "paragraph">
   			<div className ="container-fluid">
@@ -46,7 +42,6 @@ class About extends React.Component {
 				<p className = "text-center">
 				Like many things it started with a simple idea. An idea to reinvent the way we read the news. Today’s generation isn’t about being knowledgeable in a single topic, but rather well informed in a broad range of topics.  We took that very concept and built an application that allows readers to stay informed about the topics important to the world. As a team, we felt that the readers opinion  amongst most news sources was completely undermined. Our application gives users a new and exciting way to interpret the news by viewing the reactions of a story first, rather than the article itself. We hope to you enjoy using NewsPulse as much as we enjoyed creating it for you.
 </p>
-
 
 				<div id="team">
    <h1><center>Our team</center></h1>
