@@ -8,10 +8,6 @@ var app = express();
 
 /* Serve all static files from public folder */
 app.use(express.static('./client'));
-app.get('*', function (request, response){
-  response.sendFile(path.resolve("client","index.html"))
-})
-
 
 /* Include routes */
 require('./routes/routes')(app);
