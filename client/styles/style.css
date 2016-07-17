@@ -338,7 +338,11 @@ Category Menu
 About Page
 *******************/
 #headerContainer{
+<<<<<<< 342e4a65764ede6a5adebf55347dbcd221a93622
   margin: 10px auto;
+=======
+  margin:auto;
+>>>>>>> [feature]About Page finished
   width:100% ;
   color: white;
 }
@@ -361,8 +365,12 @@ About Page
 }
 #paragraph{
   word-wrap: break-word;
+<<<<<<< 342e4a65764ede6a5adebf55347dbcd221a93622
 }
 
 .fa-long-arrow-left {
   margin-right: 10px;
+=======
+>>>>>>> [feature]About Page finished
 }
+
