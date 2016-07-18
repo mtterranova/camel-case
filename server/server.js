@@ -6,7 +6,7 @@ var nyt = require('./db/nyt-api');
 var app = express();
 
 /* Serve all static files from public folder */
-app.use(express.static('../client'));
+app.use(express.static('./client'));
 
 /* Include routes */
 require('./routes/routes')(app);

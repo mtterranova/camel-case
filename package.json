@@ -9,7 +9,8 @@
   "scripts": {
     "serve": "nodemon ./server/server.js",
     "build": "webpack --watch",
-    "start": "node ./server/server.js"
+    "start": "node ./server/server.js",
+    "postinstall": "webpack -p"
   },
   "author": "camel-case",
   "license": "ISC",
