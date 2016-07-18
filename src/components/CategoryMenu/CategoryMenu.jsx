@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class CategoryMenu extends React.Component {
 	constructor(props) {
 		super(props);
@@ -10,10 +9,9 @@ class CategoryMenu extends React.Component {
 	}
 
 	fadeInMenu() {
-		var that = this
-		that.setState({ fadeInClass: 'addFadeIn' })
+		var that = this;
+		that.setState({ fadeInClass: 'addFadeIn' });
 	}
-
 
 	render() {
 		
