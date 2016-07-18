@@ -6,13 +6,13 @@ body {
 Navigation
 *****************************/
 #centerIcon {
-  color: white;
+  color: #a8a8a8;
+  font-style: italic;
   position: absolute;
-  font-size: 1.5em;
+  font-size: 16px;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-
 }
 
 
@@ -22,7 +22,7 @@ Pulse Entry
 
 .orb-entry {
   margin: 0px 0;
-  height:300px;
+  height:275px;
 }
 
 .pulsatingCircle {
@@ -338,11 +338,7 @@ Category Menu
 About Page
 *******************/
 #headerContainer{
-<<<<<<< 342e4a65764ede6a5adebf55347dbcd221a93622
   margin: 10px auto;
-=======
-  margin:auto;
->>>>>>> [feature]About Page finished
   width:100% ;
   color: white;
 }
@@ -352,7 +348,7 @@ About Page
   top:50%;
   left:50%;
   margin-right:-50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 #headerParagraph{
   margin:auto;
@@ -365,12 +361,31 @@ About Page
 }
 #paragraph{
   word-wrap: break-word;
-<<<<<<< 342e4a65764ede6a5adebf55347dbcd221a93622
 }
 
 .fa-long-arrow-left {
   margin-right: 10px;
-=======
->>>>>>> [feature]About Page finished
 }
 
+hr {
+  border-bottom: 2px solid white !important;
+  /*width: 90% !important;
+  margin-left: 5% !important;*/
+}
+
+input {
+  padding-right: 18px !important;
+}
+
+input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+svg {
+  fill: #141414 !important;
+}
+
+.text-center {
+  padding: 2% 10%;
+}

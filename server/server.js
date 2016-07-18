@@ -18,10 +18,10 @@ app.listen(port, function(){
 });
 
 /* All NYT sections to check for top day's stories */
-var sections = ['home','world','national','politics','nyregion','business','opinion','technology','science','health','sports','arts','fashion','dining','travel','magazine','realestate']
+var sections = require('./config/sections');
 
-/* TODO: change to regurlarly repeating cron job */
-var date = new Date(2016, 6, 13, 11, 46, 40);
+/* run cron job every day at 6:01am */
+var date = {hour: 06, minute: 01};
 schedule.scheduleJob(date, function(){
   sections.forEach(function(section){
     nyt(section);
