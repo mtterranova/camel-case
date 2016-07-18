@@ -18,6 +18,7 @@ class Nav extends React.Component {
 		super(props);
 
 		this.state = {
+			date: moment().format('MM-DD-YY'),
 			open: false,
 			currentSection: 'U.S.'
 		}
@@ -29,30 +30,33 @@ class Nav extends React.Component {
 
 	handleFilter(sectionFilter) {
 		this.setState({ currentSection: sectionFilter })
-		this.props.fetchArticles(sectionFilter);
+		this.props.fetchArticles(sectionFilter, this.state.date);
 	}
 
 	renderMenuItems() {
-		return this.props.sections && _.map(this.props.sections, function(num, section) {
+		return _.map(this.props.sections, function(num, section) {
 			 return <MenuItem
 			 						checked={section === this.state.currentSection ? true : false}
 			 						key={section}
 									onTouchTap={this.handleClose.bind(this)}
 									onClick={() => this.handleFilter(section)}>
-									{section} ({num})
+									{section} <span style={{'opacity':'0.4'}}> ({num})</span>
 							</MenuItem>
 		}, this)
 	}
 
 	handleDate(date) {
-		return moment(date).format('dddd MMMM Do, YYYY')
+		return moment(date).format('dddd, MMMM D, YYYY')
 	}
 
 	handleDateChange(a, newDate) {
-		this.setState({currentSection: 'U.S.'})
 		let newDateFormatted = moment(newDate).format('MM-DD-YY');
+		this.setState({
+			currentSection: 'U.S.',
+			date: newDateFormatted
+		})
 		this.props.fetchSections(newDateFormatted);
-		this.props.fetchArticles(this.state.currentSection, newDateFormatted);
+		this.props.fetchArticles(this.state.currentSection, this.state.date);
 	}
 
 	handleToggle() {
@@ -68,7 +72,8 @@ class Nav extends React.Component {
 
 		let MenuItems = this.renderMenuItems();
 		let style = {
-			color:'#FFFFFF'
+			color:'#141414',
+			fontWeight: 600
 		}
 		let AboutLink = <Link style={style} to={"/about"}>News Pulse</Link>
 		return(
@@ -79,20 +84,23 @@ class Nav extends React.Component {
 					    title = {AboutLink}
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
 					    style = {
-					    	{ 'backgroundColor': '#0097A7' }
+					    	{ 'backgroundColor': '#fff' }
 					    	}
 					    iconElementRight = {
 					    	<DatePicker
-								onChange = { this.handleDateChange.bind(this) }
-								maxDate = { new Date() }
+									onChange = { this.handleDateChange.bind(this) }
+									minDate = {new Date(2016, 6, 11)}
+									maxDate = { new Date() }
+									dateTimeFormat = { this.handleDate.bind(this) }
 					    		formatDate = { this.handleDate.bind(this) }
 					    		defaultDate = { new Date() }
-									inputStyle = {
-									{
-										'color': 'white',
-										'textAlign': 'center',
-										'width': '100%' }
-									}
+									dialogContainerStyle = {{
+										'backgroundColor': '#d3d3d3'
+									}}
+									inputStyle = {{
+										'color': '#141414',
+										'textAlign': 'right',
+									}}
 						    	autoOk = { true }
 						    />
 						}
