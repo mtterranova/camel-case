@@ -94,9 +94,6 @@ class Nav extends React.Component {
 									dateTimeFormat = { this.handleDate.bind(this) }
 					    		formatDate = { this.handleDate.bind(this) }
 					    		defaultDate = { new Date() }
-									dialogContainerStyle = {{
-										'backgroundColor': '#d3d3d3'
-									}}
 									inputStyle = {{
 										'color': '#141414',
 										'textAlign': 'right',
