@@ -2,44 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PulseEntryOrb from './PulseEntryOrb';
 import PulseEntryHover from '../PulseEntryHover/PulseEntryHover';
+import PulseHelpers from '../../../helpers/PulseHelpers';
 
-class PulseEntry extends React.Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      onOrbClick: false
-    }
+export default class PulseEntry extends React.Component {
 
-    this.handleOrbClick = this.handleOrbClick.bind(this);
-    
-
-  }
-
-   handleOrbClick(reactions){
-    console.log('handle orbClick');
-    console.log(reactions,"reactions")
-    this.setState({
-      onOrbClick: !this.state.onOrbClick
-    })
-   }
-
-   
-  
   render() {
-
-    let show = this.state.onOrbClick ?  'show'  : 'hide';
-
     return (
-      <div  
-           className="col-md-4 orb-entry">
-          <PulseEntryOrb reactions={this.props.articleData.reactions} handleOrbClick={this.handleOrbClick}/>
-          <div className={show} >
-            <PulseEntryHover articleData={this.props.articleData}/>
-          </div>
+      <div className="col-md-4 orb-entry" >
+          <PulseEntryOrb reactions={this.props.articleData.reactions} articlePopularity={this.props.articlePopularity}/>
+          <PulseEntryHover articleData={this.props.articleData} />
       </div>
     );
   }
 }
-
-module.exports = PulseEntry

@@ -1,51 +1,71 @@
+body {
+  margin-bottom: 30px;
+}
+
+/*****************************
+Navigation
+*****************************/
+#centerIcon {
+  color: #a8a8a8;
+  font-style: italic;
+  position: absolute;
+  font-size: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
 /*****************************
 Pulse Entry
 *****************************/
 
 .orb-entry {
-    margin: 50px 0;
-    height:400px;
+  margin: 0px 0;
+  height:275px;
 }
 
 .pulsatingCircle {
-    width: 25px;
-    height: 25px;
-    display: block;
-    position: relative;
-    margin: 10% auto;
-    transform: scale(5, 5);
-    -webkit-transform: scale(5, 5);
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: scale(5, 5);
+  -webkit-transform: scale(5, 5);
 }
 
 .firstCircle,
 .secondCircle,
 .thirdCircle {
-    top: 50%;
-    left: 50%;
-    display: block;
-    border-radius: 50%;
-    position: absolute;
-    vertical-align: middle;
+  top: 50%;
+  left: 50%;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  vertical-align: middle;
 }
 
 .firstCircle {
-    width: 10px;
-    height: 10px;
-    margin: -5.5px 0 0 -5.5px;
-    background-color: #ccc;
-    animation: 2000ms pulse 500ms ease-in-out infinite;
-    -webkit-animation: 2000ms pulse 500ms ease-in-out infinite
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  background-color: #ccc;
 }
 
 
-
 .secondCircle {
-    width: 16px;
-    height: 16px;
-    margin: -9px 0 0 -9px;
-    border: 1px solid #ccc;
-    animation: 2000ms pulseIn ease-in-out infinite;
-    -webkit-animation: 2000ms pulseIn ease-in-out infinite;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 1px solid #ccc;
+}
+
+.thirdCircle {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ccc;
+  margin: -12px 0 0 -12px;
 }
 
 @keyframes pulse {
@@ -94,11 +114,278 @@ Pulse Entry
     }
 }
 
-.thirdCircle {
-    width: 24px;
-    height: 24px;
-    border: 1px solid #ccc;
-    margin: -13px 0 0 -13px;
-    animation: 2000ms pulseIn 500ms ease-in-out infinite;
-    -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite
+
+/********************
+LowCircle Subject
+********************/
+
+.lowFirstCircle {
+    animation: 3500ms pulse 1500ms ease-in-out infinite;
+    -webkit-animation: 3500ms pulse 1500ms ease-in-out infinite;
+}
+
+.lowSecondCircle {
+    animation: 2000ms pulse 3000ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 3000ms ease-in-out infinite;
+}
+
+.lowThirdCircle {
+    animation: 3000ms pulse 2000ms ease-in-out infinite;
+    -webkit-animation: 3000ms pulse 2000ms ease-in-out infinite;
+}
+
+/********************
+MidCircle Subject
+********************/
+
+.midFirstCircle {
+    animation: 2000ms pulse 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulse 500ms ease-in-out infinite;
+}
+
+.midSecondCircle {
+    animation: 2000ms pulseIn ease-in-out infinite;
+    -webkit-animation: 2000ms pulseIn ease-in-out infinite;
+}
+
+.midThirdCircle {
+     animation: 2000ms pulseIn 500ms ease-in-out infinite;
+    -webkit-animation: 2000ms pulseIn 500ms ease-in-out infinite;
+}
+
+
+/*****************
+High Circle Subject
+******************/
+
+.highFirstCircle {
+     animation: 1000ms pulse 250ms ease-in-out infinite;
+    -webkit-animation: 1000ms pulse 250ms ease-in-out infinite;
+}
+
+.highSecondCircle {
+    animation: 625ms pulse 625ms ease-in-out infinite;
+    -webkit-animation: 625ms pulse 625ms ease-in-out infinite;
+}
+
+.highThirdCircle {
+    animation: 800ms pulse 450ms ease-in-out infinite;
+    -webkit-animation: 800ms pulse 450ms ease-in-out infinite;
+}
+
+
+
+
+/********************************************
+Pulse Entry Hover
+********************************************/
+
+
+.pulseEntryHover {
+  width:50px;
+  height:50px;
+  top:52.5%;
+  left:50%;
+  background-color: black;
+  z-index: 99;
+  padding: 10px;
+  transform: translateX(-50%) translateY(-50%);
+  position:absolute;
+  border-radius: 50%;
+  animation: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  padding: 10px;
+}
+
+.pulseEntryHover:hover {
+  width: 100%;
+  height:100%;
+  border-radius: 5px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+.pulseEntryHover:hover .reactionBar {
+  display:inherit;
+}
+
+.pulseEntryHover:hover .articleTitle {
+  margin: 0;
+  padding: 0;
+  font-size:28px;
+  display:inherit;
+}
+
+.pulseEntryHover:hover .articleAbstract {
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-size:14px;
+  display:inherit;
+}
+
+.articleTitle{
+  font-size: 0px;
+}
+
+.articleTitle a {
+  color: white;
+}
+
+.articleAbstract{
+  font-size: 0px;
+}
+
+.reactionBar{
+  display: none;
+  position: inherit;
+  margin: 10px 0;
+}
+
+.articleTitle, .articleAbstract, .reactionBar{
+  color:transparent;
+  animation: color 1.5s ease-in-out;
+  -webkit-transition: color 1.5s ease-in-out;
+}
+
+.retranslate {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/******************************
+Category Menu
+******************************/
+
+#CategoryMenu {
+
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+    border-radius: 3%;
+
+}
+
+.addFadeIn {
+    animation: 2000ms fadeIn ease-in-out;
+    animation-fill-mode:forwards;
+    -webkit-transition: 2000ms fadeIn ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    z-index: 150;
+
+.retranslate {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/******************************
+Category Menu
+******************************/
+
+#CategoryMenu {
+
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+    border-radius: 3%;
+
+}
+
+.addFadeIn {
+    animation: 2000ms fadeIn ease-in-out;
+    animation-fill-mode:forwards;
+    -webkit-transition: 2000ms fadeIn ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    z-index: 150;
+
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/********************
+About Page
+*******************/
+#headerContainer{
+  margin: 10px auto;
+  width:100% ;
+  color: white;
+}
+#headerTitle{
+  margin:auto;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-right:-50%;
+  transform: translate(-50%, -50%);
+}
+#headerParagraph{
+  margin:auto;
+  position:absolute;
+  top:60%;
+  left:50%;
+  margin-right:-50%;
+  transform: translate(-50%,-50%);
+  font-style: italic;
+}
+#paragraph{
+  word-wrap: break-word;
+}
+
+.fa-long-arrow-left {
+  margin-right: 10px;
+}
+
+hr {
+  border-bottom: 2px solid white !important;
+  /*width: 90% !important;
+  margin-left: 5% !important;*/
+}
+
+input {
+  padding-right: 18px !important;
+}
+
+input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+svg {
+  fill: #141414 !important;
+}
+
+.text-center {
+  padding: 2% 10%;
 }

@@ -1,26 +1,21 @@
 import React from 'react';
 import PulseGrid from './PulseGrid/PulseGrid';
+import CategoryMenu from './CategoryMenu/CategoryMenu';
+import { Link } from 'react-router';
 import Nav from './NavBar/Nav';
+import About from './About/About'
 
 
+export default class Home extends React.Component {
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      
-    }
-  }
-  
   render() {
+
     return (
       <div>
-        <Nav/>
-        <PulseGrid/>
+      	<Nav />
+        <PulseGrid />
       </div>
     );
+
   }
 }
-
-module.exports = Home
